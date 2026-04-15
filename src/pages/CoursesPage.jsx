@@ -1,0 +1,265 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle, Info, Star, ChevronRight } from 'lucide-react';
+import EnrollmentModal from '../components/EnrollmentModal';
+
+import course01 from '../assets/images/courses-01.jpg';
+import course02 from '../assets/images/courses-02.jpg';
+import course03 from '../assets/images/courses-03.jpg';
+import course04 from '../assets/images/courses-04.jpg';
+import course05 from '../assets/images/courses-05.jpg';
+import nilaniImg from '../assets/images/nilani.png';
+import puminImg from '../assets/images/pumin.png';
+
+const coursesData = [
+  {
+    id: 1,
+    title: "Diploma in Aviation, Hospitality and Travel Management",
+    image: course01,
+    duration: "12 Months, 5 days/week (Mon- Fri)",
+    eligibility: ["12th Pass or Pursuing & Graduates", "Age: 18 - 25 Years", "Skill India Certification"],
+    accreditation: ["AASSC"]
+  },
+  {
+    id: 2,
+    title: "Foundation in Travel & Tourism with Amadeus",
+    image: course02,
+    duration: "8 Months, 5 days/week (Mon-Fri)",
+    eligibility: ["12th Pass & Graduate", "Age: 18-25 Years"],
+    accreditation: ["AASSC"]
+  },
+  {
+    id: 3,
+    title: "Passenger Ground Services Course",
+    image: course03,
+    duration: "6 Months, 3 days/week",
+    eligibility: ["12th Pass or Above", "Age: 18 - 26 Years"],
+    accreditation: ["AASSC"]
+  },
+  {
+    id: 4,
+    title: "Airport Ramp Services Training",
+    image: course04,
+    duration: "4 Months, Fast Track",
+    eligibility: ["10th / 12th Pass", "Age: 18-28 Years"],
+    accreditation: ["Kite", "AASSC"]
+  },
+  {
+    id: 5,
+    title: "Airline Cabin Crew Professional",
+    image: course05,
+    duration: "10 Months, Intensive",
+    eligibility: ["12th Pass", "Height: 155cm (F) / 170cm (M)", "Age: 18-24 Years"],
+    accreditation: ["AASSC"]
+  },
+  {
+    id: 6,
+    title: "Commercial Pilot Liaison Program",
+    image: course01, // Reuse for demo
+    duration: "18 Months, Full Time",
+    eligibility: ["12th Pass (Physics/Maths)", "Class II Medical", "Age: 17+ Years"],
+    accreditation: ["DGCA"]
+  },
+  {
+    id: 7,
+    title: "Aviation Safety & Security",
+    image: course02, // Reuse for demo
+    duration: "3 Months, Certificate",
+    eligibility: ["Graduate preferred", "Age: 20-30 Years"],
+    accreditation: ["BCAS"]
+  },
+  {
+    id: 8,
+    title: "Air Cargo & Logistics Management",
+    image: course03, // Reuse for demo
+    duration: "6 Months, Regular",
+    eligibility: ["12th Pass or Above", "Age: 18-28 Years"],
+    accreditation: ["AASSC"]
+  }
+];
+
+const TripleArrow = () => (
+    <span className="inline-flex ml-1">
+        <span className="opacity-40">›</span>
+        <span className="opacity-70">›</span>
+        <span>›</span>
+    </span>
+);
+
+const CoursesPage = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const handleEnroll = (courseTitle) => {
+    setSelectedCourse(courseTitle);
+    setModalOpen(true);
+  };
+
+  const handleEnquire = () => {
+    setSelectedCourse("");
+    setModalOpen(true);
+  };
+
+  return (
+    <div className="bg-[#f8fafc] min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-primary pt-48 pb-24 text-center">
+        <div className="container mx-auto px-6">
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-white text-4xl md:text-6xl font-black uppercase tracking-tight mb-6"
+          >
+            Don't Just Dream. <span className="text-accent italic">Fly High</span>
+          </motion.h1>
+          <p className="text-white/70 max-w-2xl mx-auto mb-10 text-sm font-medium leading-relaxed">
+            From ground handling to cabin crew, we provide the expert training you need to excel in the global travel industry.
+          </p>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleEnquire}
+            className="bg-accent text-white px-10 py-4 text-sm font-black uppercase tracking-widest hover:bg-white hover:text-accent transition-all duration-300 rounded-sm shadow-xl"
+          >
+            Enquire Now
+          </motion.button>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-6 py-20">
+        <div className="flex flex-col lg:flex-row gap-12">
+          
+          {/* Course Grid (Left) */}
+          <div className="lg:w-2/3 space-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {coursesData.map((course) => (
+                <motion.div 
+                  key={course.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 flex flex-col group hover:shadow-2xl transition-all duration-500"
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                       <span className="text-white text-[10px] font-black uppercase tracking-widest bg-accent px-3 py-1">View Details</span>
+                    </div>
+                  </div>
+                  
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h3 className="text-lg font-black uppercase text-primary leading-tight mb-4 group-hover:text-accent transition-colors">
+                      {course.title}
+                    </h3>
+                    <div className="flex items-center gap-2 mb-6 text-gray-400">
+                       <Star className="text-accent" size={12} fill="currentColor" />
+                       <span className="text-[10px] font-bold uppercase tracking-widest">Aviation Excellence</span>
+                    </div>
+                    
+                    <div className="space-y-6">
+                      <div>
+                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary/40 mb-2">Duration</h4>
+                        <p className="text-sm font-bold text-gray-600">{course.duration}</p>
+                      </div>
+
+                      <div className="bg-gray-50 p-6 rounded-2xl border border-dashed border-gray-200">
+                        <h4 className="text-[11px] font-black uppercase tracking-widest text-[#121b2f] mb-4">Eligibility Criteria</h4>
+                        <ul className="space-y-2">
+                          {course.eligibility.map((item, idx) => (
+                            <li key={idx} className="flex items-center gap-3 text-xs font-semibold text-gray-500">
+                              <CheckCircle size={14} className="text-accent shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div>
+                         <h4 className="text-[11px] font-black uppercase tracking-widest text-primary/40 mb-3">Govt Recognized Certificate</h4>
+                         <div className="flex gap-4">
+                            {course.accreditation.map(brand => (
+                              <div key={brand} className="bg-white border border-gray-100 px-4 py-2 rounded-lg shadow-sm font-black text-[10px] text-primary/50 tracking-tighter">
+                                 {brand === 'AASSC' ? '🏛️ AASSC' : brand}
+                              </div>
+                            ))}
+                         </div>
+                      </div>
+
+                      <button 
+                        onClick={() => handleEnroll(course.title)}
+                        className="w-full bg-accent text-white py-4 rounded-xl text-sm font-black uppercase tracking-[0.15em] hover:bg-primary transition-all shadow-lg shadow-accent/20"
+                      >
+                        Enroll Now!
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sidebar (Right) */}
+          <div className="lg:w-1/3 space-y-12">
+            
+            {/* Recommendation Box */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-primary p-10 rounded-[2.5rem] text-center shadow-2xl relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700" />
+              <div className="relative z-10 space-y-6">
+                <h3 className="text-white text-2xl font-black leading-tight uppercase">Can I suggest a course for you?</h3>
+                <p className="text-white/60 text-sm leading-relaxed">Answer a few quick questions and we'll recommend the perfect course based on your interests.</p>
+                <button 
+                  onClick={handleEnquire}
+                  className="bg-accent text-white px-6 py-4 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white hover:text-accent transition-all shadow-xl shadow-black/20"
+                >
+                  Get Course Recommendation
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Recent Placements */}
+            <div className="space-y-8">
+              <h3 className="text-xl font-black uppercase text-primary tracking-tight px-2 border-l-4 border-accent">Recent Placements</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+                {[
+                  { name: "Nilani", role: "Cabin Crew", img: nilaniImg },
+                  { name: "Pumin", role: "Ground Services", img: puminImg }
+                ].map((person, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.2 }}
+                    className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl group"
+                  >
+                    <img src={person.img} alt={person.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent flex flex-col justify-end p-8">
+                      <span className="text-accent text-[10px] font-black uppercase tracking-widest mb-1">{person.role}</span>
+                      <h4 className="text-white text-2xl font-black uppercase">{person.name}</h4>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <EnrollmentModal 
+        isOpen={modalOpen} 
+        onClose={() => setModalOpen(false)} 
+        selectedCourse={selectedCourse} 
+        courses={coursesData}
+      />
+    </div>
+  );
+};
+
+export default CoursesPage;
