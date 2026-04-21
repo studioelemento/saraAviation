@@ -17,8 +17,8 @@ const Home = () => {
     <>
       <Hero />
       <Features />
-      <PilotHero/>
       <AviationCourses/>
+      <PilotHero/>
       <AirlinePartners/>
       <LatestNews/>
       <MediaShowcaseFooter/>
