@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 // Pages
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import AboutPage from './pages/AboutPage';
 import CoursesPage from './pages/CoursesPage';
 import NewsPage from './pages/NewsPage';
