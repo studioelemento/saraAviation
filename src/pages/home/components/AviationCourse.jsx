@@ -7,7 +7,7 @@ export default function AviationCourses() {
         {/* Top Content */}
         <div className="max-w-3xl mb-12">
           <p className="text-sm text-gray-600 mb-3">
-            Kite Institute of Aviation & Hospitality
+            Sara Institute of Aviation & Hospitality
           </p>
 
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-relaxed">
@@ -55,7 +55,7 @@ export default function AviationCourses() {
 const courses = [
   {
     title:
-      "Kite Diploma Course in Aviation, Hospitality and Travel Management",
+      "Sara Diploma Course in Aviation, Hospitality and Travel Management",
     duration: "Duration: 12 Months, 5 days/week (Mon-Fri) 2 hours",
   },
   {

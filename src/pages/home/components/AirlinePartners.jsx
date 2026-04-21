@@ -1,23 +1,23 @@
 import React from "react";
 
-export default function AirlinePartners() {
+export default function AirlinePartners({ title = "Careers Take Off with Top Airlines" }) {
   return (
     <section className="w-full bg-gray-100 py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-10">
-          Careers Take Off with Top Airlines
+          {title}
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
           {logos.map((logo, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl h-24 flex items-center justify-center shadow-sm hover:shadow-md transition"
+              className="rounded-xl h-24 overflow-hidden shadow-sm hover:shadow-md transition group"
             >
-              <img
+              <img 
                 src={logo}
                 alt="airline"
-                className="max-h-12 object-contain"
+                className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
               />
             </div>
           ))}
@@ -27,19 +27,4 @@ export default function AirlinePartners() {
   );
 }
 
-const logos = [
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/vector-1738924083951-20550219ec5f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-];
+const logos  = Array(15).fill("https://i.pinimg.com/1200x/2e/2b/89/2e2b893fbe64a47a9a14bb75f77b5527.jpg");

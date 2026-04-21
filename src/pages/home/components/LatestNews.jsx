@@ -1,61 +1,65 @@
 
 
-
-const news = [
-  {
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
-    title: "India's Aviation Boom and Its Impact on Job Opportunities",
-    date: "28 Jan 2025",
-    desc: "India takes flight as one of the fastest-growing aviation markets globally...",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
-    title: "India’s Aviation Industry: Charting New Heights",
-    date: "20 Jan 2025",
-    desc: "The aviation industry continues to evolve with innovation and growth...",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
-    title: "Top 7 aviation careers taking off in 2025",
-    date: "01 Jan 2025",
-    desc: "Explore the most promising aviation career paths for the future...",
-  },
-];
+import { Link } from 'react-router-dom';
+import { newsArticles } from '../../../data/newsData';
 
 export function LatestNews() {
+  // Show the latest 3 news items
+  const homeNews = newsArticles.slice(0, 3);
+
   return (
     <section className="w-full bg-gray-100 py-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-4">
           <div>
-            <p className="text-sm text-gray-500">Updates & Highlights</p>
-            <h2 className="text-3xl font-bold text-blue-900">Latest News</h2>
+            <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1">Updates & Highlights</p>
+            <h2 className="text-3xl font-black text-primary">Latest News</h2>
           </div>
 
-          <button className="border px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">
+          <Link 
+            to="/news"
+            className="border-2 border-primary/10 px-6 py-2 rounded-full text-sm font-bold text-primary hover:bg-primary hover:text-white transition-all duration-300"
+          >
             View All News
-          </button>
+          </Link>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {news.map((item, index) => (
-            <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-              <img src={item.image} alt="news" className="w-full h-48 object-cover" />
+        <div className="grid md:grid-cols-3 gap-8">
+          {homeNews.map((item, index) => (
+            <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group border border-gray-50 flex flex-col">
+              <div className="relative overflow-hidden aspect-video">
+                <img 
+                  src={item.image} 
+                  alt="news" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
 
-              <div className="p-5">
-                <h3 className="font-semibold text-lg text-blue-900 mb-2">
+              <div className="p-6 flex-1 flex flex-col">
+                <div className="flex items-center gap-2 mb-3">
+                   <span className="text-[10px] font-bold text-accent uppercase tracking-wider bg-accent/10 px-2 py-0.5 rounded">
+                     {item.category}
+                   </span>
+                   <p className="text-[10px] text-gray-400 font-semibold uppercase">{item.date}</p>
+                </div>
+
+                <h3 className="font-bold text-lg text-primary mb-3 leading-tight group-hover:text-accent transition-colors">
                   {item.title}
                 </h3>
 
-                <p className="text-xs text-gray-500 mb-3">{item.date}</p>
-
-                <p className="text-sm text-gray-600 line-clamp-3">
-                  {item.desc}
+                <p className="text-sm text-gray-500 line-clamp-2 mb-6">
+                  {item.excerpt}
                 </p>
 
-                <button className="mt-4 text-sm text-gray-500 hover:text-black">
+                <Link 
+                  to="/news" 
+                  className="mt-auto inline-flex items-center gap-2 text-xs font-bold text-primary hover:text-accent transition-colors"
+                >
                   Read Story
-                </button>
+                  <svg className="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
               </div>
             </div>
           ))}
@@ -63,4 +67,4 @@ export function LatestNews() {
       </div>
     </section>
   );
-}
+}

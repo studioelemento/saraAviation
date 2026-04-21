@@ -42,7 +42,7 @@ const coursesData = [
     image: course04,
     duration: "4 Months, Fast Track",
     eligibility: ["10th / 12th Pass", "Age: 18-28 Years"],
-    accreditation: ["Kite", "AASSC"]
+    accreditation: ["Sara", "AASSC"]
   },
   {
     id: 5,

@@ -9,15 +9,16 @@ const navGroups = [
   [
     { name: 'ABOUT SARA', href: '/about' },
     { name: 'COURSES', href: '/courses' },
+  ],
+  [
     { name: 'PLACEMENT', href: '/placement' },
-  ],
-  [
     { name: 'NEWS & UPDATES', href: '/news' },
-    { name: 'MEDIA GALLERY', href: '/gallery' },
-    { name: 'STUDENT HUB', href: '/student-hub' },
   ],
   [
+    { name: 'MEDIA GALLERY', href: '/gallery' },
     { name: 'OUR TEAM', href: '/team' },
+  ],
+  [
     { name: 'CAREERS', href: '/careers' },
     { name: 'CONTACT', href: '/contact' },
   ]
@@ -50,7 +51,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Grid Menu */}
-        <nav className="hidden lg:flex gap-16 xl:gap-24 pt-1">
+        <nav className="hidden lg:flex gap-8 xl:gap-12 pt-1">
           {navGroups.map((group, gIndex) => (
             <div key={gIndex} className="flex flex-col gap-3">
               {group.map((item) => (
