@@ -80,7 +80,11 @@ const Footer = () => {
     <footer className="bg-black pt-16 pb-6">
       {/* Logo + Tagline */}
       <div className="flex flex-col items-center gap-3 mb-8">
-        <AviationLogo />
+        <img 
+          src="/assets/logo/Sara Aviation Logo White Orange.png" 
+          alt="Sara Aviation Academy" 
+          className="h-20 md:h-28 w-auto object-contain"
+        />
         <p className="text-white text-base text-center leading-relaxed tracking-wide">
           India's <strong className="font-bold">Most Trusted</strong>
           <br />

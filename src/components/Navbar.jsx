@@ -37,11 +37,13 @@ const Navbar = () => {
     <header className="absolute top-0 left-0 w-full z-50 py-8 font-sans bg-primary/95">
       <div className="max-w-[1400px] mx-auto px-8 flex justify-between items-start">
         
-        {/* Exact Logo Recreation */}
+        {/* Official Logo + Text */}
         <Link to="/" className="flex items-center gap-4 group">
-          <div className="bg-white p-2 rounded-sm shadow-inner group-hover:scale-105 transition-transform duration-300">
-             <Plane className="text-primary" size={36} />
-          </div>
+          <img 
+            src="/assets/logo/Sara Aviation Logo White Orange.png" 
+            alt="Logo" 
+            className="h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+          />
           <div className="flex flex-col border-white/20 pl-1">
             <h1 className="text-xl md:text-2xl font-black text-white leading-[1.1] tracking-normal max-w-[250px]">
               SARA <span className="text-white/70">INSTITUTE OF</span> AVIATION & HOSPITALITY
