@@ -5,7 +5,7 @@ export default function AviationCourses() {
     <section className="w-full bg-gray-100 py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Top Content */}
-        <div className="max-w-3xl mb-12">
+        <div className="max-w-3xl mb-12 text-left">
           <p className="text-sm text-gray-600 mb-3">
             Sara Institute of Aviation & Hospitality
           </p>
