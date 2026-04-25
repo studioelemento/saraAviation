@@ -34,7 +34,7 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 py-8 font-sans bg-primary/95">
+    <header className="absolute top-0 left-0 w-full z-50 py-8 font-sans bg-navbar/95">
       <div className="max-w-[1400px] mx-auto px-8 flex justify-between items-start">
         
         {/* Official Logo + Text */}
@@ -88,7 +88,7 @@ const Navbar = () => {
             initial={{ opacity: 0, scaleY: 0 }}
             animate={{ opacity: 1, scaleY: 1 }}
             exit={{ opacity: 0, scaleY: 0 }}
-            className="absolute top-full left-0 w-full bg-primary origin-top lg:hidden shadow-3xl border-t border-white/5"
+            className="absolute top-full left-0 w-full bg-navbar origin-top lg:hidden shadow-3xl border-t border-white/5"
           >
             <div className="container mx-auto px-8 py-10 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12">
               {navGroups.flat().map((item) => (
