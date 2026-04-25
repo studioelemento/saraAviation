@@ -4,12 +4,6 @@ import { Plane, Users, ShieldCheck } from 'lucide-react';
 
 const features = [
   {
-    icon: <Plane size={24} />,
-    title: "Pilot Training",
-    description: "Launch your career in the skies with our comprehensive Commercial Pilot License (CPL) training programs.",
-    link: "/courses"
-  },
-  {
     icon: <Users size={24} />,
     title: "Cabin Crew",
     description: "Master the art of in-flight hospitality and safety with our world-class cabin crew certification courses.",
@@ -21,12 +15,18 @@ const features = [
     title: "Ground Staff",
     description: "Expert training in airport management, ground handling, and technical support services.",
     link: "/courses"
+  },
+  {
+    icon: <Plane size={24} />,
+    title: "Pilot Training",
+    description: "Launch your career in the skies with our comprehensive Commercial Pilot License (CPL) training programs.",
+    link: "/courses"
   }
 ];
 
 const Features = () => {
   return (
-    <section className="bg-primary -mt-px relative z-30">
+    <section className="bg-[#082B4D] -mt-px relative z-30">
       <div className="container mx-auto px-0 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3">
           {features.map((feature, index) => (

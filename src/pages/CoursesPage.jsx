@@ -227,8 +227,8 @@ const CoursesPage = () => {
               <h3 className="text-xl font-black uppercase text-primary tracking-tight px-2 border-l-4 border-accent">Recent Placements</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
                 {[
-                  { name: "Nilani", role: "Cabin Crew", img: nilaniImg },
-                  { name: "Pumin", role: "Ground Services", img: puminImg }
+                  { name: "Neha Kapoor", role: "Air India", img: "/assets/Sarah Aviation Placements/Neha Kapoor.png" },
+                  { name: "Aarav Mehtha", role: "Ground Services", img: "/assets/Sarah Aviation Placements/Aarav Mehtha.png" }
                 ].map((person, idx) => (
                   <motion.div 
                     key={idx}

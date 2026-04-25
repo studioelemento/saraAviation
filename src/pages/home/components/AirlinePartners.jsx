@@ -34,20 +34,25 @@ const logos = [
 
   
   "/assets/partners/Air Asia Logo.png",
-  "/assets/partners/Air India Express Logo.png",
-  "/assets/partners/Air India Logo.png",
-  "/assets/partners/AirArabia Logo.png",
-  "/assets/partners/Akasa Air Logo.png",
+  "/assets/partners/Indigo Logo.png",
+ 
+  "/assets/partners/Emirates Logo.png",
   "/assets/partners/American Airlines Logo.png",
+   "/assets/partners/Air India Logo copy.png",
   "/assets/partners/BWFS Logo.png",
   "/assets/partners/CelebiAviation Logo.png",
   "/assets/partners/EaseMyTrip logo.png",
-  "/assets/partners/Emirates Logo.png",
+ 
+
   "/assets/partners/Etihad Airways Logo.png",
   "/assets/partners/GMR Group Logo.png",
+  
+  "/assets/partners/Akasa Air Logo.png",
+    "/assets/partners/AirArabia Logo.png",
+   "/assets/partners/Air India Express Logo.png",
   "/assets/partners/Harley Davidson Logo.png",
   "/assets/partners/ITC Limited Logo.png",
-  "/assets/partners/Indigo Logo.png",
+ 
   "/assets/partners/JW Marriott logo.png",
   "/assets/partners/Kuwait Airways Logo.png",
   "/assets/partners/Oberoi  Logo.png",
@@ -60,6 +65,8 @@ const logos = [
   "/assets/partners/The leela Group Logo.png",
   "/assets/partners/VFS Global Logo.png",
   "/assets/partners/Vistara Logo.png",
-  "/assets/partners/Westin Hotels Logo.png"
+  "/assets/partners/Westin Hotels Logo.png",
+   "/assets/partners/Singapore Airlines Logo.png",
+   "/assets/partners/Oman Air Logo.png"
 ];
 

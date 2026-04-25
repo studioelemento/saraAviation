@@ -5,34 +5,30 @@ import AirlinePartners from "./home/components/AirlinePartners";
 const placeholderImg = "https://i.pinimg.com/736x/5d/c5/ff/5dc5ffbad0d623c3196bf4b55291992d.jpg";
 
 const students = [
-  { id: 1, name: "Sneha Kapoor", airline: "Air India", img: placeholderImg },
-  { id: 2, name: "Rahul Malhotra", airline: "Indigo", img: placeholderImg },
-  { id: 3, name: "Ananya Iyer", airline: "SpiceJet", img: placeholderImg },
-  { id: 4, name: "Vikram Singh", airline: "Vistara", img: placeholderImg },
-  { id: 5, name: "Priya Sharma", airline: "Air India Express", img: placeholderImg },
-  { id: 6, name: "Arjun Reddy", airline: "Akasa Air", img: placeholderImg },
-  { id: 7, name: "Meera Das", airline: "Star Air", img: placeholderImg },
-  { id: 8, name: "Karan Johar", airline: "AirAsia India", img: placeholderImg },
-  { id: 9, name: "Tanya Verma", airline: "IndiGo", img: placeholderImg },
-  { id: 10, name: "Siddharth Jain", airline: "Vistara", img: placeholderImg },
-  { id: 11, name: "Ishita Bose", airline: "Air India", img: placeholderImg },
-  { id: 12, name: "Rohan Gupta", airline: "Qatar Airways", img: placeholderImg },
-  { id: 13, name: "Aarti Singh", airline: "Emirates", img: placeholderImg },
-  { id: 14, name: "Sameer Khan", airline: "Ethihad Airways", img: placeholderImg },
-  { id: 15, name: "Riya Chawla", airline: "FlyDubai", img: placeholderImg },
-  { id: 16, name: "Aditya Nair", airline: "Air India Express", img: placeholderImg },
-  { id: 17, name: "Zara Sheikh", airline: "SpiceJet", img: placeholderImg },
-  { id: 18, name: "Nikhil Pandey", airline: "IndiGo", img: placeholderImg },
-  { id: 19, name: "Kriti Sen", airline: "Air India", img: placeholderImg },
-  { id: 20, name: "Varun Dhawan", airline: "Akasa Air", img: placeholderImg },
-  { id: 21, name: "Simran Kaur", airline: "IndiGo", img: placeholderImg },
-  { id: 22, name: "Deepak Mehra", airline: "Qatar Airways", img: placeholderImg },
-  { id: 23, name: "Sakshi Goel", airline: "Vistara", img: placeholderImg },
-  { id: 24, name: "Abhishek Roy", airline: "Air India", img: placeholderImg },
-  { id: 25, name: "Mona Rawat", airline: "IndiGo", img: placeholderImg },
-  { id: 26, name: "Yash Soni", airline: "Emirates", img: placeholderImg },
-  { id: 27, name: "Preeti Negi", airline: "Etihad Airways", img: placeholderImg },
-  { id: 28, name: "Manish Gill", airline: "Vistara", img: placeholderImg },
+  { id: 1, name: "Aarav Mehtha", airline: "Air India", img: "/assets/Sarah Aviation Placements/Aarav Mehtha.png" },
+  { id: 2, name: "Aazan Khan", airline: "IndiGo", img: "/assets/Sarah Aviation Placements/Aazan Khan.png" },
+  { id: 3, name: "Adithya", airline: "SpiceJet", img: "/assets/Sarah Aviation Placements/Adithya.png" },
+  { id: 4, name: "Aditi", airline: "Vistara", img: "/assets/Sarah Aviation Placements/Aditi.png" },
+  { id: 5, name: "Ananya", airline: "Air India Express", img: "/assets/Sarah Aviation Placements/Ananya.png" },
+  { id: 6, name: "Anjali", airline: "Akasa Air", img: "/assets/Sarah Aviation Placements/Anjali.png" },
+  { id: 7, name: "Evangeline", airline: "Qatar Airways", img: "/assets/Sarah Aviation Placements/Evangeline.png" },
+  { id: 8, name: "Farhan Ahmed", airline: "Emirates", img: "/assets/Sarah Aviation Placements/Farhan Ahmed.png" },
+  { id: 9, name: "Gloria", airline: "Etihad Airways", img: "/assets/Sarah Aviation Placements/Gloria.png" },
+  { id: 10, name: "Karthik", airline: "AirAsia India", img: "/assets/Sarah Aviation Placements/Karthik.png" },
+  { id: 11, name: "Manjunath", airline: "GMR Group", img: "/assets/Sarah Aviation Placements/Manjunath.png" },
+  { id: 12, name: "Meera", airline: "IndiGo", img: "/assets/Sarah Aviation Placements/Meera.png" },
+  { id: 13, name: "Mehek", airline: "Vistara", img: "/assets/Sarah Aviation Placements/Mehek.png" },
+  { id: 14, name: "Neha Kapoor", airline: "Air India", img: "/assets/Sarah Aviation Placements/Neha Kapoor.png" },
+  { id: 15, name: "Nisha", airline: "Akasa Air", img: "/assets/Sarah Aviation Placements/Nisha.png" },
+  { id: 16, name: "Pooja", airline: "IndiGo", img: "/assets/Sarah Aviation Placements/Pooja.png" },
+  { id: 17, name: "Ritu", airline: "Vistara", img: "/assets/Sarah Aviation Placements/Ritu.png" },
+  { id: 18, name: "Rohit", airline: "SpiceJet", img: "/assets/Sarah Aviation Placements/Rohit.png" },
+  { id: 19, name: "Rohit Kumar", airline: "Air India", img: "/assets/Sarah Aviation Placements/Rohit (2).png" },
+  { id: 20, name: "Sachin", airline: "IndiGo", img: "/assets/Sarah Aviation Placements/Sachin.png" },
+  { id: 21, name: "Sandeep", airline: "Vistara", img: "/assets/Sarah Aviation Placements/Sandeep.png" },
+  { id: 22, name: "Shreya", airline: "Qatar Airways", img: "/assets/Sarah Aviation Placements/Shreya.png" },
+  { id: 23, name: "Simran", airline: "Emirates", img: "/assets/Sarah Aviation Placements/Simran.png" },
+  { id: 24, name: "Vikram", airline: "Air India", img: "/assets/Sarah Aviation Placements/Vikram.png" },
 ];
 
 const PlacementPage = () => {
@@ -72,13 +68,13 @@ const PlacementPage = () => {
               className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
             >
               {/* Image Container */}
-              <div className="aspect-[3/4] overflow-hidden relative">
+              <div className="aspect-square overflow-hidden relative bg-gray-50 flex items-center justify-center p-2">
                 <img
                   src={student.img}
                   alt={student.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
               {/* Info Container */}
