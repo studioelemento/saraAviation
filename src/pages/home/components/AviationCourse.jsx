@@ -14,7 +14,7 @@ export default function AviationCourses() {
             India’s <span className="font-bold underline decoration-red-500">prestigious</span> aviation training institute based in Bangalore, dedicated to providing world-class programs that equip aspiring professionals for successful careers in airlines, airports, and the hospitality industry.
           </h2>
 
-          <a href="#" className="text-blue-600 mt-4 inline-block font-medium">
+          <a href="#" className="text-primary mt-4 inline-block font-medium">
             Know More
           </a>
         </div>

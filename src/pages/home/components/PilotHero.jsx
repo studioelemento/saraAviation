@@ -53,7 +53,7 @@ export default function PilotHero() {
         <div className="space-y-6 text-center md:text-left order-2 md:order-1">
           <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl font-bold leading-tight text-gray-900">
             Your <br className="hidden md:block" />
-            <span className="text-blue-600">Commercial Pilot</span> <br className="hidden md:block" />
+            <span className="text-primary">Commercial Pilot</span> <br className="hidden md:block" />
             Journey Starts <br className="hidden md:block" />
             Here
           </h1>
