@@ -60,7 +60,7 @@ const navLinks = [
   { label: 'About', to: '/about' },
   { label: 'Courses', to: '/courses' },
   { label: 'Placement', to: '/placement' },
-  { label: 'Our Team', to: '/team' },
+  //{ label: 'Our Team', to: '/team' },
   { label: 'Media Gallery', to: '/gallery' },
   { label: 'News & Updates', to: '/news' },
   { label: 'Careers', to: '/careers' },

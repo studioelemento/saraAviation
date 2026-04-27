@@ -71,7 +71,7 @@ const Contact = () => {
   return (
     <section className="bg-white">
       {/* Hero Header */}
-      <div className="bg-primary pt-44 md:pt-60 pb-24 md:pb-32 px-6 text-center relative overflow-hidden">
+      <div className="bg-primary pt-60 md:pt-70 pb-24 md:pb-32 px-6 text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-10 w-96 h-96 bg-accent rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-10 w-96 h-96 bg-blue-400 rounded-full blur-[120px]" />

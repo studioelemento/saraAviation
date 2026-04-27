@@ -105,7 +105,7 @@ const courses = [
     duration: "Duration: 6 Months, 5 days/week (Mon-Fri) 2 hours",
   },
   {
-    title: "Airport Ramp Services Training",
+    title: "PG Diploma Course in Aviation, Hospitality and Travel Management",
     duration: "Duration: 6 Months, 5 days/week (Mon-Fri) 2 hours",
   },
   {

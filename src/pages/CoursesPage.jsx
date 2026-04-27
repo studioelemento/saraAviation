@@ -38,10 +38,10 @@ const coursesData = [
   },
   {
     id: 4,
-    title: "Airport Ramp Services Training",
+    title: "PG Diploma Course in Aviation, Hospitality and Travel Management",
     image: course04,
-    duration: "4 Months, Fast Track",
-    eligibility: ["10th / 12th Pass", "Age: 18-28 Years"],
+    duration: "6 Months, 5 days/week (Mon-Fri), 2 hours",
+    eligibility: ["Pursuing Graduates & Graduates", "Age: 21-27 Years"],
     accreditation: ["Sara", "AASSC"]
   },
   {
@@ -223,25 +223,39 @@ const CoursesPage = () => {
             </motion.div>
 
             {/* Recent Placements */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               <h3 className="text-xl font-black uppercase text-primary tracking-tight px-2 border-l-4 border-accent">Recent Placements</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+              <div className="flex flex-col gap-4">
                 {[
                   { name: "Neha Kapoor", role: "Air India", img: "/assets/Sarah Aviation Placements/Neha Kapoor.png" },
-                  { name: "Aarav Mehtha", role: "Ground Services", img: "/assets/Sarah Aviation Placements/Aarav Mehtha.png" }
+                  { name: "Aarav Mehtha", role: "Ground Services", img: "/assets/Sarah Aviation Placements/Aarav Mehtha.png" },
+                  { name: "Aditi", role: "Vistara", img: "/assets/Sarah Aviation Placements/Aditi.png" },
+                  { name: "Ananya", role: "Air India Express", img: "/assets/Sarah Aviation Placements/Ananya.png" },
                 ].map((person, idx) => (
                   <motion.div 
                     key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: idx * 0.2 }}
-                    className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl group"
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-md border border-gray-100 group hover:shadow-xl hover:border-accent/30 transition-all duration-300"
                   >
-                    <img src={person.img} alt={person.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent flex flex-col justify-end p-8">
-                      <span className="text-accent text-[10px] font-black uppercase tracking-widest mb-1">{person.role}</span>
-                      <h4 className="text-white text-2xl font-black uppercase">{person.name}</h4>
+                    {/* Square avatar */}
+                    <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100">
+                      <img 
+                        src={person.img} 
+                        alt={person.name} 
+                        className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" 
+                      />
+                    </div>
+                    {/* Info */}
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-black uppercase text-primary truncate group-hover:text-accent transition-colors">{person.name}</h4>
+                      <span className="text-[11px] font-bold text-accent uppercase tracking-widest">✈ {person.role}</span>
+                    </div>
+                    {/* Badge */}
+                    <div className="flex-shrink-0">
+                      <span className="text-[9px] font-black bg-accent/10 text-accent px-2 py-1 rounded-full uppercase tracking-wider">Placed</span>
                     </div>
                   </motion.div>
                 ))}

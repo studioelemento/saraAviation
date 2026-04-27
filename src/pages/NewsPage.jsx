@@ -40,14 +40,14 @@ const NewsPage = () => {
       </section>
 
       {/* Filter & Grid Section */}
-      <section className="py-20 container mx-auto px-6 max-w-7xl">
+      <section className="py-10  container mx-auto px-1 max-w-7xl">
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-nowrap overflow-x-auto md:flex-wrap md:justify-center justify-start gap-2 md:gap-5 mb-8 pb-1 scrollbar-hide px-2 md:px-0">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              className={`px-4.5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
                 activeCategory === cat 
                   ? "bg-accent text-white shadow-lg shadow-accent/30" 
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
