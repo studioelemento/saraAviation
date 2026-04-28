@@ -9,9 +9,13 @@ const CTL = () => {
   return (
     <div>
       <CTLHero />
-      <FoundationSection />
+      <div id="learn-more">
+        <FoundationSection />
+      </div>
       <PathwaysSection/>
-      <CareerFormSection/>
+      <div id="apply">
+        <CareerFormSection/>
+      </div>
       <ProgramPhases/>
     </div>
   );
