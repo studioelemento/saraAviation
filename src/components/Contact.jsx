@@ -4,25 +4,25 @@ import { Phone, Mail, MapPin, MessageSquare, Send } from 'lucide-react';
 
 const IconInstagram = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
   </svg>
 );
 
 const IconTwitter = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
   </svg>
 );
 
 const IconFacebook = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
 
 const IconLinkedin = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" />
   </svg>
 );
 
@@ -30,9 +30,9 @@ const contactInfo = [
   {
     icon: <Phone className="w-6 h-6" />,
     title: "Call Us",
-    detail: "+91 98765 43210",
+    detail: "+91 9187250470",
     sub: "Mon - Sat, 9:00 AM - 6:00 PM",
-    link: "tel:+919876543210",
+    link: "tel:+919187250470",
     color: "bg-blue-500"
   },
   {
@@ -40,15 +40,15 @@ const contactInfo = [
     title: "WhatsApp",
     detail: "Chat with Admissions",
     sub: "Instant response during office hours",
-    link: "https://wa.me/919876543210",
+    link: "https://wa.me/919187250470",
     color: "bg-green-500"
   },
   {
     icon: <Mail className="w-6 h-6" />,
     title: "Email Us",
-    detail: "info@saraaviation.com",
+    detail: "info@saraaviation.in",
     sub: "admissions@saraaviation.com",
-    link: "mailto:info@saraaviation.com",
+    link: "mailto:info@saraaviation.in",
     color: "bg-accent"
   }
 ];
@@ -76,7 +76,7 @@ const Contact = () => {
           <div className="absolute top-0 right-10 w-96 h-96 bg-accent rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-10 w-96 h-96 bg-blue-400 rounded-full blur-[120px]" />
         </div>
-        
+
         <div className="container mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -87,7 +87,7 @@ const Contact = () => {
               Contact Us
             </span>
             <h1 className="text-4xl md:text-7xl font-black text-white leading-tight mb-6">
-              Let's Keep <br className="hidden md:block" /> 
+              Let's Keep <br className="hidden md:block" />
               <span className="text-accent underline md:underline decoration-white/10 underline-offset-[12px]">In Touch</span>
             </h1>
             <p className="text-sm md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
@@ -124,7 +124,7 @@ const Contact = () => {
       {/* Main Content Area */}
       <div className="py-24 container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
+
           {/* Form Side */}
           <div className="lg:col-span-7">
             <motion.div
@@ -134,29 +134,29 @@ const Contact = () => {
               className="bg-gray-50 rounded-[3rem] p-8 md:p-14"
             >
               <h2 className="text-3xl font-black text-primary mb-10">Send an Inquiry</h2>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-primary/50 ml-2">Your Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
                       placeholder="e.g. John Doe"
                       className="w-full bg-white border border-gray-100 rounded-2xl p-4 text-sm font-medium focus:ring-2 focus:ring-accent outline-none transition-all shadow-sm"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-primary/50 ml-2">Email Address</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       required
                       placeholder="e.g. john@example.com"
                       className="w-full bg-white border border-gray-100 rounded-2xl p-4 text-sm font-medium focus:ring-2 focus:ring-accent outline-none transition-all shadow-sm"
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                   </div>
                 </div>
@@ -164,21 +164,21 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-primary/50 ml-2">Phone Number</label>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
                       required
                       placeholder="+91 00000 00000"
                       className="w-full bg-white border border-gray-100 rounded-2xl p-4 text-sm font-medium focus:ring-2 focus:ring-accent outline-none transition-all shadow-sm"
                       value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-primary/50 ml-2">Inquiry Type</label>
-                    <select 
+                    <select
                       className="w-full bg-white border border-gray-100 rounded-2xl p-4 text-sm font-medium focus:ring-2 focus:ring-accent outline-none transition-all shadow-sm appearance-none"
                       value={formData.subject}
-                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     >
                       <option>Admissions</option>
                       <option>Careers</option>
@@ -191,17 +191,17 @@ const Contact = () => {
 
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-primary/50 ml-2">Your Message</label>
-                  <textarea 
+                  <textarea
                     rows="5"
                     required
                     placeholder="How can we help you today?"
                     className="w-full bg-white border border-gray-100 rounded-2xl p-4 text-sm font-medium focus:ring-2 focus:ring-accent outline-none transition-all shadow-sm resize-none"
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
                 </div>
 
-                <button 
+                <button
                   type="submit"
                   className="w-full bg-primary text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-accent hover:shadow-2xl hover:shadow-accent/20 transition-all duration-500 flex items-center justify-center gap-3 group"
                 >
@@ -226,18 +226,19 @@ const Contact = () => {
                 </h3>
                 <p className="text-gray-500 leading-relaxed text-sm">
                   Sara Institute of Aviation & Hospitality<br />
-                  Central Business District, MG Road Area,<br />
-                  Bengaluru, Karnataka 560001, India
+                  #6/4, 2nd Floor, Above Tata Motors Showroom,<br />
+                  Singanayakanahalli, Yelahanka, Bangalore,<br />
+                  Karnataka, 560119 - India
                 </p>
               </div>
 
               <div className="aspect-square w-full rounded-[3rem] overflow-hidden border-8 border-gray-50 shadow-inner group">
-                <iframe 
-                  src="https://maps.google.com/maps?q=Bengaluru,+Karnataka,+India&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-                  width="100%" 
-                  height="100%" 
-                  frameBorder="0" 
-                  style={{ border: 0 }} 
+                <iframe
+                  src="https://maps.google.com/maps?q=Bengaluru,+Karnataka,+India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  style={{ border: 0 }}
                   allowFullScreen
                   title="Sara Aviation Location"
                   className="grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
@@ -261,7 +262,7 @@ const Contact = () => {
       </div>
 
       {/* Floating WhatsApp Action (Mobile Only) */}
-      <a 
+      <a
         href="https://wa.me/919876543210"
         target="_blank"
         rel="noopener noreferrer"

@@ -43,7 +43,7 @@ const Navbar = () => {
         {/* Official Logo + Text */}
         <Link to="/" className="flex items-center gap-1 md:gap-6 group ">
           <img 
-            src="/assets/logo/Sara Aviation Logo White Orange.png" 
+            src="/assets/logo/SaraAviationLogoWhiteOrangeAvif.avif" 
             alt="Logo" 
             className="h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
           />

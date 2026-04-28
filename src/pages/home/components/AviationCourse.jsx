@@ -15,9 +15,9 @@ export default function AviationCourses() {
               Sara Institute of Aviation & Hospitality, Bangalore, is a premier training institute committed to shaping the next generation of aviation and hospitality professionals. With a strong focus on industry-relevant skills, practical training, and personality development, we equip students with the knowledge and confidence required to excel in airlines, airports, and global hospitality sectors. Our experienced faculty, modern training approach, and dedicated placement support ensure that every student is prepared to step into a successful and rewarding career.
             </h2>
 
-            <a href="#" className="text-blue-600 mt-4 inline-block font-medium hover:underline transition-all">
+            {/* <a href="#" className="text-blue-600 mt-4 inline-block font-medium hover:underline transition-all">
               Know More
-            </a>
+            </a> */}
           </div>
 
           <div className="lg:w-1/3 space-y-6">
