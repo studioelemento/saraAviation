@@ -11,10 +11,13 @@ import AirlinePartners from './components/AirlinePartners';
 import { LatestNews } from './components/LatestNews';
 import Footer from '../../components/Footer';
 import { MediaShowcaseFooter } from './components/MediaShowCaseFooter.jsx';
+import Navbar from '../../components/Navbar.jsx';
 
 const Home = () => {
   return (
     <>
+      <Navbar />
+
       <Hero />
       <Features />
       <AviationCourses/>

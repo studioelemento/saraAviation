@@ -1,33 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const slides = [
-  {
-    src: "https://i.pinimg.com/736x/5d/c5/ff/5dc5ffbad0d623c3196bf4b55291992d.jpg",
-    alt: "Pilot in cockpit",
-    caption: "Professional Cockpit Training",
-  },
-  {
-    src: "https://i.pinimg.com/736x/e5/5e/fc/e55efc389309d24b77cbf5a4fb0cb62b.jpg",
-    alt: "Aviation pilot",
-    caption: "Become a Commercial Pilot",
-  },
-  {
-    src: "https://i.pinimg.com/736x/c6/19/ab/c619ab2f2a240aaf631150612a4af1be.jpg",
-    alt: "Cockpit view",
-    caption: "Dual Pilot Cockpit Simulation",
-  },
-  {
-    src: "https://i.pinimg.com/1200x/1c/54/39/1c5439838273b9e8870e977f0146fd89.jpg",
-    alt: "Aviation training",
-    caption: "Advanced Avionics & Navigation",
-  },
-  {
-    src: "https://i.pinimg.com/1200x/f8/34/9b/f8349b99d0558a213dedd89f0b9bf581.jpg",
-    alt: "Airplane at night",
-    caption: "DGCA Licence Conversion Program",
-  },
-];
 
 export default function PilotHero() {
   const [current, setCurrent] = useState(0);
@@ -65,10 +37,7 @@ export default function PilotHero() {
             DGCA Licence Conversion
           </p>
 
-          <Link
-            to="/courses"
-            className="inline-block bg-black text-white px-8 py-3.5 rounded-full text-base font-medium hover:bg-gray-800 hover:-translate-y-0.5 transition-all shadow-lg hover:shadow-xl"
-          >
+          <Link to="/ctl"  className="bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition">
             Start Your CPL Journey
           </Link>
         </div>

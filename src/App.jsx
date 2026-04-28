@@ -14,6 +14,7 @@ import PlacementPage from './pages/PlacementPage';
 import GalleryPage from './pages/GalleryPage';
 import StudentHub from './pages/StudentHub';
 import CareersPage from './pages/CareersPage';
+import CTL from './pages/ctl/CTL';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -28,10 +29,10 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <ScrollToTop />
-      <Navbar />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/ctl" element={<CTL />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/news" element={<NewsPage />} />
