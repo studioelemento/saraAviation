@@ -2,12 +2,36 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
-// Generate 60 unique-ish images for the gallery
-const galleryImages = Array.from({ length: 60 }).map((_, i) => ({
-  id: i + 1,
-  title: `Aviation Highlight ${i + 1}`,
-  url: "https://i.pinimg.com/736x/14/a1/88/14a188950a021ac3b9ec74d75b1c884c.jpg" 
-}));
+const galleryImages = [
+  { id: 1, title: "Classroom Training", url: "/assets/mediaGallery/classroom 8.png" },
+  { id: 2, title: "Sports Day", url: "/assets/mediaGallery/sports 1.jpeg" },
+  { id: 3, title: "Student Activities", url: "/assets/mediaGallery/activity 1.jpeg" },
+  { id: 4, title: "Grooming Session", url: "/assets/mediaGallery/Grooming 2.jpeg" },
+  { id: 5, title: "Counselling", url: "/assets/mediaGallery/counselling.jpeg" },
+  { id: 6, title: "Academy Lobby", url: "/assets/mediaGallery/lobby.jpeg" },
+  { id: 7, title: "Campus Highlights", url: "/assets/mediaGallery/DSC00760.JPG.jpeg" },
+  { id: 8, title: "Training Session", url: "/assets/mediaGallery/DSC00772.JPG.jpeg" },
+  { id: 9, title: "Student Interaction", url: "/assets/mediaGallery/DSC00806.JPG.jpeg" },
+  { id: 10, title: "Classroom", url: "/assets/mediaGallery/classroom 9.png" },
+  { id: 11, title: "Aviation Training", url: "/assets/mediaGallery/DSC00854.JPG (1).jpeg" },
+  { id: 12, title: "Practical Learning", url: "/assets/mediaGallery/DSC00884.JPG (1).jpeg" },
+  { id: 13, title: "Campus Life", url: "/assets/mediaGallery/DSC00921.JPG (1).jpeg" },
+  { id: 14, title: "Activity", url: "/assets/mediaGallery/activity day 1.jpeg" },
+  { id: 15, title: "Sports Highlight", url: "/assets/mediaGallery/sport new 1.png" },
+  { id: 16, title: "Sports Team", url: "/assets/mediaGallery/sport new 4.png" },
+  { id: 17, title: "Academy Sports", url: "/assets/mediaGallery/sport new 6.png" },
+  { id: 18, title: "Competition", url: "/assets/mediaGallery/sport new 9.png" },
+  { id: 19, title: "Athletics", url: "/assets/mediaGallery/sport new 10.png" },
+  { id: 20, title: "Field Events", url: "/assets/mediaGallery/sport new 11.webp" },
+  { id: 21, title: "Academy View", url: "/assets/mediaGallery/image.jpeg" },
+  { id: 22, title: "Student Portrait", url: "/assets/mediaGallery/pic17.webp" },
+  { id: 23, title: "Moment of Success", url: "/assets/mediaGallery/WhatsApp Image 2026-05-02 at 3.20.04 PM.jpeg" },
+  { id: 24, title: "Group Celebration", url: "/assets/mediaGallery/WhatsApp Image 2026-05-02 at 3.20.05 PM (1).jpeg" },
+  { id: 25, title: "Event Highlight", url: "/assets/mediaGallery/WhatsApp Image 2026-05-02 at 3.20.05 PM.jpeg" },
+  { id: 26, title: "Training Drill", url: "/assets/mediaGallery/pic 13.jfif" },
+  { id: 27, title: "Student Drill", url: "/assets/mediaGallery/pic 14.jfif" },
+  { id: 28, title: "Practical Session", url: "/assets/mediaGallery/pic 15.jfif" },
+];
 
 const GalleryPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -40,7 +64,7 @@ const GalleryPage = () => {
 
       {/* Gallery Grid */}
       <section className="py-16 container mx-auto px-6">
-        <div className="columns-3 sm:columns-4 md:columns-5 lg:columns-6 gap-3 space-y-3">
+        <div className="columns-3 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-5 gap-3 space-y-3">
           <AnimatePresence mode="popLayout">
             {galleryImages.map((img, index) => (
               <motion.div
@@ -105,11 +129,11 @@ const GalleryPage = () => {
                   alt={selectedImage.title} 
                   className="max-w-full max-h-[70vh] object-contain rounded-xl"
                 />
-                <div className="w-full pt-4 sm:pt-6 px-4 text-center">
+                {/* <div className="w-full pt-4 sm:pt-6 px-4 text-center">
                   <h2 className="text-primary text-xl font-bold">
                     {selectedImage.title}
                   </h2>
-                </div>
+                </div> */}
               </div>
             </motion.div>
           </div>

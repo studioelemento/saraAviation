@@ -18,7 +18,8 @@ html {
 @layer base {
   body {
     @apply font-sans bg-white text-gray-900;
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' style='font-size:24px'><text y='35'>✈️</text></svg>"), auto;
+    /* cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' style='font-size:24px'><text y='35'>✈️</text></svg>"), auto;
+  */
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
