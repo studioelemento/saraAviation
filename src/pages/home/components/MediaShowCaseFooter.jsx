@@ -10,13 +10,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
 
-  
-import campusImg from '../../../../public/assets/mediaShowcase/Campus.jpeg';
-import trainingImg from '../../../../public/assets/mediaShowcase/Training.png';
-import ActivitiesImg from '../../../../public/assets/mediaShowcase/activity.jpeg';
-import sportsImg from '../../../../public/assets/mediaShowcase/sports.jpeg';
-
 const promoReel = '/assets/mediaShowcase/promoReel.mp4';
+const campusImg = '/assets/mediaShowcase/Campus.jpeg';
+const trainingImg = '/assets/mediaShowcase/Training.png';
+const ActivitiesImg = '/assets/mediaShowcase/activity.jpeg';
+const sportsImg = '/assets/mediaShowcase/sports.jpeg';
 
 const media = [
   { title: "Promo Reel", video: promoReel },
@@ -140,14 +138,13 @@ export function MediaShowcaseFooter() {
               onClick={() => setSelectedMedia(null)}
               className="absolute inset-0 bg-black/95 backdrop-blur-md"
             />
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className={`relative rounded-3xl overflow-hidden shadow-2xl ${
-                selectedMedia.video ? 'h-full max-h-[85vh] aspect-[9/16] bg-black border border-white/10' : 'w-auto h-auto max-w-[95vw] max-h-[95vh]'
-              }`}
+              className={`relative rounded-3xl overflow-hidden shadow-2xl ${selectedMedia.video ? 'h-full max-h-[85vh] aspect-[9/16] bg-black border border-white/10' : 'w-auto h-auto max-w-[95vw] max-h-[95vh]'
+                }`}
             >
               <button
                 onClick={() => setSelectedMedia(null)}
@@ -155,7 +152,7 @@ export function MediaShowcaseFooter() {
               >
                 <X size={24} />
               </button>
-              
+
               {selectedMedia.video ? (
                 <video
                   src={selectedMedia.video}

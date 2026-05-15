@@ -4,11 +4,11 @@ import { CheckCircle, Info, Star, ChevronRight } from 'lucide-react';
 import EnrollmentModal from '../components/EnrollmentModal';
 
 import course01 from '../assets/CourseImage/Diploma.png';
-import coursePGDiploma from '../assets/CourseImage/PGdiPloma.png';
+import coursePGDiploma from '../assets/CourseImage/course2.jpg';
 import courseFoundation from '../assets/CourseImage/Foundation in Travel & Tourism with Amadeus.png';
 import coursePassenger from '../assets/CourseImage/Passenger Ground Services Course.png';
 import courseCargo from '../assets/CourseImage/Cargo Introductory Course.png';
-import courseAirport from '../assets/CourseImage/Airport Operations Fundamentals.png';
+import courseAirport from '../assets/CourseImage/aiportOperation5.jpg';
 import course02 from '../assets/images/courses-02.jpg';
 import course03 from '../assets/images/courses-03.jpg';
 import course04 from '../assets/images/courses-04.jpg';

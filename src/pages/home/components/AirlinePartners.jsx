@@ -12,12 +12,12 @@ export default function AirlinePartners({ title = "Careers Take Off with Top Air
           {logos.map((logo, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg h-13 sm:h-28 flex items-center justify-center shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 overflow-hidden"
+              className="bg-white rounded-lg h-16 sm:h-28 flex items-center justify-center shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 overflow-hidden"
             >
               <img 
                 src={logo}
                 alt="career partner"
-                className="w-full h-full object-contain sm:object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>
           ))}
