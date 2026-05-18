@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Plane, Briefcase, Users, GraduationCap, Mail, MapPin, Clock, ChevronRight } from "lucide-react";
 
 const benefits = [
@@ -70,6 +70,19 @@ const steps = [
 ];
 
 const CareersPage = () => {
+  const [toastMessage, setToastMessage] = useState('');
+
+  const handleEmailClick = (e, emailAddress) => {
+    navigator.clipboard.writeText(emailAddress)
+      .then(() => {
+        setToastMessage("Email copied to clipboard! Opening mail app...");
+        setTimeout(() => setToastMessage(""), 4000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy email: ", err);
+      });
+  };
+
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
@@ -230,6 +243,7 @@ const CareersPage = () => {
               <p className="text-white/60 mb-6 md:mb-8 text-sm max-w-xs mx-auto leading-relaxed">Don't see your role? We're always looking for exceptional talent. Send us your CV directly.</p>
               <a 
                 href="mailto:info@saraaviation.in"
+                onClick={(e) => handleEmailClick(e, "info@saraaviation.in")}
                 className="inline-block w-full bg-white text-primary py-3.5 md:py-4 rounded-full text-sm md:text-base font-bold hover:bg-accent hover:text-white transition-all duration-300"
               >
                 info@saraaviation.in
@@ -243,6 +257,23 @@ const CareersPage = () => {
       <div className="py-12 md:py-20 text-center border-t border-gray-50">
         <p className="text-gray-300 text-[10px] md:text-sm uppercase tracking-[0.3em] font-bold">Elevate Your Career • Sara Aviation Academy</p>
       </div>
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-primary/95 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-2xl border border-white/10 flex items-center gap-3 font-semibold text-sm whitespace-nowrap"
+          >
+            <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-primary font-bold text-xs">
+              ✓
+            </div>
+            <span>{toastMessage}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

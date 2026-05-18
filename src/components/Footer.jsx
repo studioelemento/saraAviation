@@ -17,6 +17,14 @@ const IconInstagram = () => (
   </svg>
 );
 
+const IconLinkedIn = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 const IconFacebook = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -67,18 +75,19 @@ const navLinks = [
   { label: 'Courses', to: '/courses' },
   { label: 'Placement', to: '/placement' },
   //{ label: 'Our Team', to: '/team' },
-  { label: 'Media Gallery', to: '/gallery' },
+  { label: 'Life at Sara', to: '/gallery' },
   { label: 'News & Updates', to: '/news' },
   { label: 'Careers', to: '/careers' },
   { label: 'Contact', to: '/contact' },
 ];
 
 const socialLinks = [
-  { icon: <IconFacebook />, href: 'https://www.facebook.com/profile.php?id=61574363164488#', label: 'Facebook' },
+  { icon: <IconFacebook />, href: 'https://www.facebook.com/share/1ADp4FEKJo/', label: 'Facebook' },
+   { icon: <IconLinkedIn />, href: 'https://www.linkedin.com/in/sara-aviation-40382840b?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
   { icon: <IconInstagram />, href: 'https://www.instagram.com/sara_aviation_/?next=%2Fsara_group_sara_tuitions%2F', label: 'Instagram' },
-  { icon: <IconYoutube />, href: '#', label: 'YouTube' },
+  { icon: <IconYoutube />, href: 'https://youtube.com/@saraaviation-2026?si=BlbFOzgEH2O9LObe', label: 'YouTube' },
   { icon: <IconWhatsapp />, href: 'whatsapp://send?phone=+919187250470&text=Hello%2C%20I%20am%20interested%20in%20your%20courses.%20Can%20you%20provide%20more%20details%3F', label: 'WhatsApp' },
-  { icon: <IconX />, href: '#', label: 'X (Twitter)' },
+  { icon: <IconX />, href: 'https://x.com/SaraAviation26', label: 'X (Twitter)' },
 ];
 
 const Footer = () => {
@@ -92,9 +101,10 @@ const Footer = () => {
           className="h-20 md:h-28 w-auto object-contain"
         />
         <p className="text-white text-base text-center leading-relaxed tracking-wide">
-          India's <strong className="font-bold">Most Trusted</strong>
+         WHERE DREAMS TAKE FLIGHT
+          {/* India's <strong className="font-bold">Most Trusted</strong>
           <br />
-          Aviation Training Institute
+          Aviation Training Institute */}
         </p>
       </div>
 

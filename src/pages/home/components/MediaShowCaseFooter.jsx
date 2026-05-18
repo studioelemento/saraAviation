@@ -37,7 +37,7 @@ export function MediaShowcaseFooter() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-black mb-12 tracking-tight"
         >
-          Media Showcase
+          SARA SHOWCASE
         </motion.h2>
       </div>
 

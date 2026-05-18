@@ -64,6 +64,18 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  const handleEmailClick = (e, emailAddress) => {
+    navigator.clipboard.writeText(emailAddress)
+      .then(() => {
+        setToastMessage("Email copied to clipboard! Opening mail app...");
+        setTimeout(() => setToastMessage(""), 4000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy email: ", err);
+      });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -123,24 +135,32 @@ const Contact = () => {
       {/* Info Cards */}
       <div className="container mx-auto px-6 -mt-16 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {contactInfo.map((info, index) => (
-            <motion.a
-              key={index}
-              href={info.link}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white p-8 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col items-center text-center group"
-            >
-              <div className={`w-14 h-14 ${info.color} text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                {info.icon}
-              </div>
-              <h3 className="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-2">{info.title}</h3>
-              <p className="text-primary text-lg font-black mb-1">{info.detail}</p>
-              <p className="text-gray-500 text-xs">{info.sub}</p>
-            </motion.a>
-          ))}
+          {contactInfo.map((info, index) => {
+            const isMailLink = info.link.startsWith("mailto:");
+            return (
+              <motion.a
+                key={index}
+                href={info.link}
+                onClick={(e) => {
+                  if (isMailLink) {
+                    handleEmailClick(e, info.detail);
+                  }
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white p-8 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col items-center text-center group"
+              >
+                <div className={`w-14 h-14 ${info.color} text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  {info.icon}
+                </div>
+                <h3 className="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-2">{info.title}</h3>
+                <p className="text-primary text-lg font-black mb-1">{info.detail}</p>
+                <p className="text-gray-500 text-xs">{info.sub}</p>
+              </motion.a>
+            );
+          })}
         </div>
       </div>
 
@@ -305,8 +325,8 @@ const Contact = () => {
                   {[
                     { Icon: IconInstagram, href: 'https://www.instagram.com/sara_aviation_/?next=%2Fsara_group_sara_tuitions%2F' },
                     { Icon: IconFacebook, href: 'https://www.facebook.com/profile.php?id=61574363164488#' },
-                    { Icon: IconTwitter, href: '#' },
-                    { Icon: IconLinkedin, href: '#' }
+                    { Icon: IconTwitter, href: 'https://x.com/SaraAviation26' },
+                    { Icon: IconLinkedin, href: 'https://www.linkedin.com/in/sara-aviation-40382840b/' }
                   ].map((social, i) => (
                     <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-gray-50 text-primary flex items-center justify-center hover:bg-accent hover:text-white hover:scale-110 transition-all duration-300">
                       <social.Icon />
@@ -329,6 +349,23 @@ const Contact = () => {
       >
         <MessageSquare size={28} />
       </a>
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-primary/95 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-2xl border border-white/10 flex items-center gap-3 font-semibold text-sm whitespace-nowrap"
+          >
+            <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-primary font-bold text-xs">
+              ✓
+            </div>
+            <span>{toastMessage}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

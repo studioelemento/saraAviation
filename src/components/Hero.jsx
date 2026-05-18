@@ -50,7 +50,7 @@ const Hero = () => {
             transition={{ delay: 0.8 }}
             className="text-white text-base md:text-lg font-semibold uppercase tracking-[4px] mb-6"
           >
-            Sara Aviation Academy
+            Sara Aviation Institute
           </motion.h6>
           
           <motion.h2 

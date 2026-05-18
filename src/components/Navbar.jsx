@@ -18,7 +18,7 @@ const navGroups = [
   ],
   [
      { name: 'NEWS & UPDATES', href: '/news' },
-    { name: 'MEDIA GALLERY', href: '/gallery' }
+    { name: 'Life at Sara', href: '/gallery' }
     // { name: 'OUR TEAM', href: '/team' },
   ],
   [
