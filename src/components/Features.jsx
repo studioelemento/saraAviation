@@ -1,26 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Plane, Users, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const features = [
   {
     icon: <Users size={24} />,
     title: "Cabin Crew",
     description: "Master the art of in-flight hospitality and safety with our world-class cabin crew certification courses.",
-    link: "/courses",
+    link: "/courses?id=1",
     color: "bg-accent"
   },
   {
     icon: <ShieldCheck size={24} />,
     title: "Ground Staff",
     description: "Expert training in airport management, ground handling, and technical support services.",
-    link: "/courses"
+    link: "/courses?id=6"
   },
   {
     icon: <Plane size={24} />,
     title: "Pilot Training",
     description: "Launch your career in the skies with our comprehensive Commercial Pilot License (CPL) training programs.",
-    link: "/courses"
+    link: "/ctl"
   }
 ];
 
@@ -53,12 +54,12 @@ const Features = () => {
                     <p className="text-white/70 group-hover:text-white transition-colors duration-300 text-sm leading-relaxed">
                       {feature.description}
                     </p>
-                    <a 
-                      href={feature.link}
-                      className="inline-block text-white text-sm font-bold uppercase tracking-wide border-b-2 border-white pb-1 hover:pb-2 transition-all"
+                    <Link 
+                      to={feature.link}
+                      className="inline-block text-white text-sm font-bold uppercase tracking-wide border-b-2 border-white pb-1 hover:pb-2 transition-all cursor-pointer"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
