@@ -45,6 +45,8 @@ const Navbar = () => {
           <img 
             src="/assets/logo/SaraAviationLogoWhiteOrangeAvif.avif" 
             alt="Logo" 
+            loading="eager"
+            fetchpriority="high"
             className="h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
           />
           <div className="flex flex-col border-white/20 pl-1">

@@ -63,7 +63,8 @@ export default function AviationCourses() {
                 {courses.map((course, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition border border-gray-100 group"
+                    onClick={() => navigate(`/courses?id=${course.id || (index + 1)}`)}
+                    className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-accent/40 cursor-pointer transition border border-gray-100 group"
                   >
                     <div className="flex items-start gap-4">
                       <div className="text-2xl group-hover:scale-125 transition-transform duration-300">✈️</div>
@@ -125,26 +126,32 @@ export default function AviationCourses() {
 
 const courses = [
   {
+    id: 1,
     title: "Sara Diploma Course in Aviation, Hospitality and Travel Management",
     duration: "Duration: 12 Months, 5 days/week (Mon-Fri) 2 hours",
   },
   {
+    id: 2,
     title: "PG Diploma Course in Aviation, Hospitality and Travel Management",
     duration: "Duration: 6 Months, 5 days/week (Mon-Fri) 2 hours",
   },
   {
+    id: 3,
     title: "Foundation in Travel & Tourism with Amadeus",
     duration: "Duration: 8 Months, 5 days/week (Mon-Fri) 2 hours",
   },
   {
+    id: 4,
     title: "Airport Operations Fundamentals",
     duration: "Duration: 6 Months, 5 days/week (Mon-Fri) 2 hours",
   },
   {
+    id: 5,
     title: "Cargo Introductory Course",
     duration: "Duration: 6 Months, 5 days/week (Mon-Fri) 2 hours",
   },
   {
+    id: 6,
     title: "Passenger Ground Services Course",
     duration: "Duration: 6 Months, 5 days/week (Mon-Fri) 2 hours",
   },
