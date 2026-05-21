@@ -248,16 +248,28 @@ const coursesData = [
 
 const AASSCLogoCard = ({ size = "md" }) => {
   const isSm = size === "sm";
+  const [imgError, setImgError] = useState(false);
   return (
-    <div className={`bg-white border border-gray-100 shadow-md flex flex-col items-center justify-center p-2 select-none hover:shadow-lg transition-all duration-300 ${
-      isSm ? "w-20 h-14 rounded-xl" : "w-28 h-20 rounded-2xl"
-    }`}>
-      <div className={`${isSm ? "w-6 h-6 text-xs" : "w-8 h-8 text-base"} rounded-full bg-[#002b5b] text-white flex items-center justify-center font-bold shadow-inner`}>
-        🏛️
-      </div>
-      <span className={`font-black text-[#0d2149] uppercase tracking-wider ${isSm ? "text-[6px] mt-0.5" : "text-[8px] mt-1.5"}`}>
-        AASSC
-      </span>
+    <div className={`bg-white border border-gray-100 shadow-md flex flex-col items-center justify-center p-2 select-none hover:shadow-lg transition-all duration-300 ${isSm ? "w-20 h-14 rounded-xl" : "w-28 h-20 rounded-2xl"
+      }`}>
+      {!imgError ? (
+        <img
+          src="/assets/certificatesLogo/aasscLogo.jpg"
+          alt="AASSC Logo"
+          loading="lazy"
+          onError={() => setImgError(true)}
+          className={`${isSm ? "h-10" : "h-14"} w-auto object-contain`}
+        />
+      ) : (
+        <>
+          <div className={`${isSm ? "w-6 h-6 text-xs" : "w-8 h-8 text-base"} rounded-full bg-[#002b5b] text-white flex items-center justify-center font-bold shadow-inner`}>
+            🏛️
+          </div>
+          <span className={`font-black text-[#0d2149] uppercase tracking-wider ${isSm ? "text-[6px] mt-0.5" : "text-[8px] mt-1.5"}`}>
+            AASSC
+          </span>
+        </>
+      )}
     </div>
   );
 };
@@ -265,9 +277,8 @@ const AASSCLogoCard = ({ size = "md" }) => {
 const IATALogoCard = ({ size = "md" }) => {
   const isSm = size === "sm";
   return (
-    <div className={`bg-white border border-gray-100 shadow-md flex flex-col items-center justify-center p-2 select-none hover:shadow-lg transition-all duration-300 ${
-      isSm ? "w-20 h-14 rounded-xl" : "w-28 h-20 rounded-2xl"
-    }`}>
+    <div className={`bg-white border border-gray-100 shadow-md flex flex-col items-center justify-center p-2 select-none hover:shadow-lg transition-all duration-300 ${isSm ? "w-20 h-14 rounded-xl" : "w-28 h-20 rounded-2xl"
+      }`}>
       <svg className={`${isSm ? "w-14 h-10" : "w-20 h-14"} text-[#002b5b]`} viewBox="0 0 120 60" fill="currentColor">
         <circle cx="60" cy="20" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
         <ellipse cx="60" cy="20" rx="5" ry="10" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -288,15 +299,15 @@ const SARALogoCard = ({ size = "md" }) => {
   const isSm = size === "sm";
   const [imgError, setImgError] = useState(false);
   return (
-    <div className={`bg-white border border-gray-100 shadow-md flex flex-col items-center justify-center p-2 select-none hover:shadow-lg transition-all duration-300 ${
-      isSm ? "w-20 h-14 rounded-xl" : "w-28 h-20 rounded-2xl"
-    }`}>
+    <div className={`bg-white border border-gray-100 shadow-md flex flex-col items-center justify-center p-2 select-none hover:shadow-lg transition-all duration-300 ${isSm ? "w-20 h-14 rounded-xl" : "w-28 h-20 rounded-2xl"
+      }`}>
       {!imgError ? (
-        <img 
-          src="/assets/logo/Sara Aviation Logo Blue Orange.png" 
-          alt="SARA Logo" 
+        <img
+          src="/assets/logo/Sara Aviation Logo Blue Orange.png"
+          alt="SARA Logo"
+          loading="lazy"
           onError={() => setImgError(true)}
-          className={`${isSm ? "h-6" : "h-10"} w-auto object-contain`} 
+          className={`${isSm ? "h-6" : "h-10"} w-auto object-contain`}
         />
       ) : (
         <div className="flex flex-col items-center justify-center">
@@ -336,8 +347,8 @@ const CoursesPage = () => {
   }, [selectedId]);
 
   // Filter courses based on query parameter
-  const filteredCourses = selectedId 
-    ? coursesData.filter(c => c.id === selectedId) 
+  const filteredCourses = selectedId
+    ? coursesData.filter(c => c.id === selectedId)
     : coursesData;
 
   const currentCourse = selectedId && filteredCourses.length > 0 ? filteredCourses[0] : null;
@@ -358,7 +369,7 @@ const CoursesPage = () => {
   };
 
   return (
-    <div className="bg-[#f8fafc] min-h-screen font-outfit">
+    <div className="  bg-[#ffffffff] min-h-screen font-outfit">
       {/* Hero Section (Visible only when looking at all courses) */}
       {!selectedId && (
         <section className="bg-primary pt-48 pb-24 text-center relative overflow-hidden">
@@ -378,7 +389,7 @@ const CoursesPage = () => {
             <p className="text-white/70 max-w-2xl mx-auto mb-10 text-sm font-medium leading-relaxed">
               From ground handling to cabin crew, we provide the expert training you need to excel in the global travel industry.
             </p>
-            
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -392,9 +403,9 @@ const CoursesPage = () => {
       )}
 
       {/* Main Content Container */}
-      <div className={`container mx-auto px-6 ${selectedId ? 'pt-28 md:pt-36 pb-20' : 'py-20'}`}>
-        <div className="flex flex-col lg:flex-row gap-12 items-start text-left pt-10">
-          
+      <div className={`container mx-auto px-6 pb-20 ${selectedId ? 'pt-28 md:pt-36' : 'pt-8'}`}>
+        <div className="flex flex-col lg:flex-row gap-12 items-start text-left pt-8">
+
           {/* Main Left Column (2/3 Width) */}
           <div className="lg:w-2/3 w-full space-y-12">
             {selectedId && currentCourse ? (
@@ -405,7 +416,7 @@ const CoursesPage = () => {
                   onClick={handleClearFilter}
                   className="inline-flex items-center gap-2 text-blue-600 hover:text-accent font-bold text-sm tracking-wide transition-colors cursor-pointer text-left"
                 >
-                {"<  "}  {" "}Back to Programs & Courses
+                  {"<  "}  {" "}Back to Programs & Courses
                 </button>
 
                 {/* Title Section */}
@@ -425,8 +436,8 @@ const CoursesPage = () => {
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {currentCourse.eligibility.map((item, idx) => (
-                      <div 
-                        key={idx} 
+                      <div
+                        key={idx}
                         className="bg-white/10 px-5 py-4 rounded-xl flex items-center justify-center text-center font-bold text-xs leading-normal border border-white/5 shadow-inner"
                       >
                         {item}
@@ -440,7 +451,7 @@ const CoursesPage = () => {
                   <h2 className="text-2xl font-black text-[#0d2149] uppercase border-l-4 border-accent pl-4">
                     What you can learn
                   </h2>
-                  
+
                   <div className="space-y-6 divide-y divide-gray-100">
                     {currentCourse.whatYouCanLearn ? (
                       currentCourse.whatYouCanLearn.map((item, idx) => (
@@ -461,7 +472,7 @@ const CoursesPage = () => {
 
                 {/* Pink Warning Disclaimer Pill */}
                 <div className="bg-red-50 text-red-500 px-6 py-4 rounded-full text-center text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-red-100/50 shadow-sm">
-                  Selection will depend on the outcome of personal interviews
+                  Candidates will be selected based on merit and interview evaluation.
                 </div>
 
                 {/* Sara Strengths Section */}
@@ -471,8 +482,7 @@ const CoursesPage = () => {
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {[
-                      { val: "9000 Sq Ft", label: "Modern Infrastructure" },
-                      { val: "5000+", label: "Placements" },
+                      { val: "4000+", label: "Placements" },
                       { val: "500+", label: "Hiring Partners Onboard" },
                       { val: "1 Lac+", label: "Highest Monthly CTC" }
                     ].map((stat, idx) => (
@@ -520,8 +530,8 @@ const CoursesPage = () => {
                     className="bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 flex flex-col group hover:shadow-2xl transition-all duration-500 text-left"
                   >
                     <div className="relative aspect-video overflow-hidden">
-                      <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                      <div 
+                      <img src={course.image} alt={course.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <div
                         onClick={() => setSearchParams({ id: course.id })}
                         className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6 cursor-pointer"
                       >
@@ -531,7 +541,7 @@ const CoursesPage = () => {
 
                     <div className="p-8 flex-1 flex flex-col">
                       <div className="min-h-[4rem]">
-                        <h3 
+                        <h3
                           onClick={() => setSearchParams({ id: course.id })}
                           className="text-lg font-black uppercase text-primary leading-tight mb-2 hover:text-accent transition-colors cursor-pointer"
                         >
@@ -570,16 +580,16 @@ const CoursesPage = () => {
                             <CourseAccreditationLogos accreditations={course.accreditation} size="sm" />
                           </div>
 
-                          <div className="flex flex-col sm:flex-row gap-4">
+                          <div className="flex flex-col xl:flex-row gap-4">
                             <button
                               onClick={() => handleEnroll(course.title)}
-                              className="flex-grow bg-accent text-white py-4 rounded-xl text-sm font-black uppercase tracking-[0.15em] hover:bg-primary transition-all shadow-lg shadow-accent/20 cursor-pointer text-center"
+                              className="flex-grow bg-accent text-white py-4 px-2 rounded-xl text-xs lg:text-sm font-black uppercase tracking-widest hover:bg-primary transition-all shadow-lg shadow-accent/20 cursor-pointer text-center whitespace-nowrap"
                             >
                               Enroll Now!
                             </button>
                             <button
                               onClick={() => setSearchParams({ id: course.id })}
-                              className="flex-grow bg-primary/5 hover:bg-primary/10 text-primary py-4 rounded-xl text-sm font-black uppercase tracking-[0.15em] transition-all cursor-pointer text-center"
+                              className="flex-grow bg-primary/5 hover:bg-primary/10 text-primary py-4 px-2 rounded-xl text-xs lg:text-sm font-black uppercase tracking-widest transition-all cursor-pointer text-center whitespace-nowrap"
                             >
                               Explore Details
                             </button>
@@ -594,8 +604,7 @@ const CoursesPage = () => {
           </div>
 
           {/* Right Shared Sidebar Column (1/3 Width) - Always visible in both views */}
-          <div className="lg:w-1/3 w-full space-y-12 lg:sticky lg:top-24 h-fit text-left">
-            
+          <div className="lg:w-1/3 w-full space-y-12 lg:sticky lg:top-7 h-fit text-left">
             {/* Recommendation Box */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -619,10 +628,10 @@ const CoursesPage = () => {
             {/* Recent Placements */}
             <div className="space-y-6">
               <h3 className="text-xl font-black uppercase text-primary tracking-tight px-2 border-l-4 border-accent">Recent Placements</h3>
-              <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {[
                   { name: "Neha Kapoor", role: "Air India", img: "/assets/Sarah Aviation Placements/Neha Kapoor.png" },
-                  { name: "Aarav Mehtha", role: "Ground Services", img: "/assets/Sarah Aviation Placements/Aarav Mehtha.png" },
+                  { name: "Aarav Mehtha", role: "Indigo", img: "/assets/Sarah Aviation Placements/Aarav Mehtha.png" },
                   { name: "Aditi", role: "Vistara", img: "/assets/Sarah Aviation Placements/Aditi.png" },
                   { name: "Ananya", role: "Air India Express", img: "/assets/Sarah Aviation Placements/Ananya.png" },
                 ].map((person, idx) => (
@@ -638,15 +647,13 @@ const CoursesPage = () => {
                       <img
                         src={person.img}
                         alt={person.name}
+                        loading="lazy"
                         className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-black uppercase text-primary truncate group-hover:text-accent transition-colors">{person.name}</h4>
                       <span className="text-[11px] font-bold text-accent uppercase tracking-widest font-bold">✈ {person.role}</span>
-                    </div>
-                    <div className="flex-shrink-0">
-                      <span className="text-[9px] font-black bg-accent/10 text-accent px-2 py-1 rounded-full uppercase tracking-wider">Placed</span>
                     </div>
                   </motion.div>
                 ))}
