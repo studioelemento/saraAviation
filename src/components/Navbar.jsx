@@ -50,7 +50,7 @@ const Navbar = () => {
             className="h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
           />
           <div className="flex flex-col border-white/20 pl-1">
-            <h1 className="text-xs md:text-2xl font-black text-white leading-[1.1] tracking-normal max-w-[250px] ">
+            <h1 className="text-xs md:text-2xl font-black font-outfit text-white leading-[1.1] tracking-normal max-w-[250px] ">
               SARA <span className="text-white/70">INSTITUTE OF</span> AVIATION & HOSPITALITY
             </h1>
             <span className="text-[10px] font-bold text-accent tracking-[2px] uppercase mt-1">BANGALORE</span>

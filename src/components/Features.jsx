@@ -27,7 +27,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="bg-[#082B4D] -mt-px relative z-30">
+    <section className="bg-[#002B5B] -mt-px relative z-30">
       <div className="container mx-auto px-0 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3">
           {features.map((feature, index) => (
@@ -39,7 +39,7 @@ const Features = () => {
               transition={{ delay: index * 0.2, duration: 0.5 }}
               className="relative group overflow-hidden"
             >
-              <div className="bg-[#0c1228] p-10 md:p-12 h-full border-l border-white/5 transition-all duration-500 group-hover:bg-accent group-hover:shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+              <div className="bg-[#001d3d] p-10 md:p-12 h-full border-l border-white/5 transition-all duration-500 group-hover:bg-accent group-hover:shadow-[0_0_50px_rgba(0,0,0,0.5)]">
                 <div className="flex flex-col gap-6">
                   <div className="flex items-center gap-4">
                     <span className="text-white group-hover:scale-110 transition-transform duration-300">
