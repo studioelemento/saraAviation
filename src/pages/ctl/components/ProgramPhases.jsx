@@ -5,8 +5,8 @@ import { CheckCircle } from "lucide-react";
 const phases = [
   {
     phase: "01",
-    color: "bg-blue-500",
-    accent: "text-blue-400",
+    color: "bg-accent",
+    accent: "text-green-400",
     title: "Foundation in Bangalore",
     duration: "Months 1 – 4",
     location: "Bangalore, India",
@@ -20,7 +20,7 @@ const phases = [
   },
   {
     phase: "02",
-    color: "bg-green-500",
+    color: "bg-accent",
     accent: "text-green-400",
     title: "Flight Training Abroad",
     duration: "Months 5 – 12",
@@ -35,7 +35,7 @@ const phases = [
   {
     phase: "03",
     color: "bg-accent",
-    accent: "text-accent",
+    accent: "text-green-400",
     title: "Return & Convert",
     duration: "Months 13 – 15",
     points: [
@@ -47,8 +47,8 @@ const phases = [
   },
   {
     phase: "04",
-    color: "bg-purple-500",
-    accent: "text-purple-400",
+    color: "bg-accent",
+    accent: "text-green-400",
     title: "Type Rating & Advanced Training",
     duration: "Months 16 – 18",
      points: [
@@ -60,8 +60,8 @@ const phases = [
   },
   {
     phase: "05",
-    color: "bg-rose-500",
-    accent: "text-rose-400",
+    color: "bg-accent",
+    accent: "text-green-400",
     title: "Airline Placement",
     duration: "Post Training",
     points: [

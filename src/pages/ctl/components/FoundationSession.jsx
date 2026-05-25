@@ -33,9 +33,9 @@ const FoundationSection = () => {
           transition={{ duration: 0.7 }}
         >
           <span className="text-accent text-xs font-black uppercase tracking-widest mb-4 block">
-            Why Sara Aviation CTL
+            Why Sara Aviation CPL
           </span>
-          <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6 uppercase">
+          <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6 ">
             Build the{" "}
             <span className="text-accent">Foundation</span>{" "}
             Every Airline Pilot Needs
@@ -75,7 +75,7 @@ const FoundationSection = () => {
                 {item.icon}
               </div>
               <div>
-                <h4 className="text-white font-black uppercase text-sm tracking-wide mb-1">{item.title}</h4>
+                <h4 className="text-white font-black  text-sm tracking-wide mb-1">{item.title}</h4>
                 <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
               </div>
             </motion.div>

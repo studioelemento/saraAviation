@@ -18,7 +18,7 @@ export default function AviationCourses() {
             <h2 className="text-xl md:text-2xl font-normal text-gray-900 leading-snug md:leading-relaxed font-outfit">
             Sara Institute of Aviation & Hospitality is a <span className="font-bold text-accent underline underline-offset-4 decoration-2 decoration-accent/40">premier</span> training institute dedicated to preparing future aviation and hospitality professionals. Through industry-focused training, practical learning, personality development, and placement support, the institute equips students with the skills and confidence needed for successful careers in airlines, airports and the hospitality industry. <br />
             {location.pathname === "/" && (
-              <button onClick={() => navigate("/about")} className="text-blue-700 underline cursor-pointer  text-md font-bold">
+              <button onClick={() => navigate("/about")} className="text-[#007BFF] underline cursor-pointer  text-md font-bold">
             Know More
               </button>
             )}
@@ -46,8 +46,8 @@ export default function AviationCourses() {
                       <CheckCircle size={16} />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-gray-900 mb-1">{item.title}</h4>
-                      <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
+                      <h4 className="text-[17px] font-bold text-gray-900 mb-1">{item.title}</h4>
+                      <p className="text-[15px] text-gray-500 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}

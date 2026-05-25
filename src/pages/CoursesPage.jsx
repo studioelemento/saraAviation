@@ -66,7 +66,7 @@ const coursesData = [
     image: coursePGDiploma,
     duration: "6 Months, 5 days/week (Mon-Fri) 2 hours",
     eligibility: ["Graduates / Final Year Graduate", "Age: 19 - 27 Years", "Executive AASSC accreditation"],
-    accreditation: ["Sara", "AASSC"],
+    accreditation: ["AASSC", "SARA"],
     isGovt: true,
     description: "An advanced, fast-track postgraduate program designed for graduates seeking leadership roles in airlines and airport management. Focuses on advanced operations, airport terminal logistics, and hospitality service standards.",
     whatYouCanLearn: [
@@ -214,7 +214,7 @@ const coursesData = [
     image: coursePassenger,
     duration: "6 Months, 5 days/week (Mon-Fri) 2 hours",
     eligibility: ["12th Pass or Above", "Age: 18 - 27 Years", "Airline Ground Handling Systems"],
-    accreditation: ["SARA"],
+    accreditation: ["AASSC", "SARA"],
     isGovt: false,
     description: "Become the face of global airlines by mastering passenger ground services, check-in logistics, boarding procedures, and executive lounge hospitality.",
     whatYouCanLearn: [
@@ -421,7 +421,7 @@ const CoursesPage = () => {
 
                 {/* Title Section */}
                 <div>
-                  <h1 className="text-3xl md:text-5xl font-black text-[#0d2149] leading-tight mb-4 uppercase">
+                  <h1 className="text-3xl md:text-5xl font-black text-[#0d2149] leading-tight mb-4">
                     {currentCourse.title}
                   </h1>
                   <p className="text-sm font-bold text-gray-500 uppercase tracking-wider">
@@ -431,7 +431,7 @@ const CoursesPage = () => {
 
                 {/* Eligibility Box */}
                 <div className="bg-[#002b5b] p-8 rounded-3xl text-white shadow-lg">
-                  <h3 className="text-lg font-black uppercase tracking-widest mb-6">
+                  <h3 className="text-lg font-black tracking-widest mb-6">
                     Eligibility Criteria
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -448,7 +448,7 @@ const CoursesPage = () => {
 
                 {/* What You Can Learn Section */}
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-black text-[#0d2149] uppercase border-l-4 border-accent pl-4">
+                  <h2 className="text-2xl font-black text-[#0d2149] border-l-4 border-accent pl-4">
                     What you can learn
                   </h2>
 
@@ -456,10 +456,10 @@ const CoursesPage = () => {
                     {currentCourse.whatYouCanLearn ? (
                       currentCourse.whatYouCanLearn.map((item, idx) => (
                         <div key={idx} className={`${idx > 0 ? 'pt-6' : ''} space-y-2`}>
-                          <h4 className="text-sm font-black text-[#0d2149] uppercase">
+                          <h4 className="text-[16px] font-black text-[#0d2149]">
                             {item.title}
                           </h4>
-                          <p className="text-xs font-semibold text-gray-500 leading-relaxed">
+                          <p className="text-[15px] font-semibold text-gray-500 leading-relaxed">
                             {item.desc}
                           </p>
                         </div>
@@ -477,7 +477,7 @@ const CoursesPage = () => {
 
                 {/* Sara Strengths Section */}
                 <div className="space-y-6">
-                  <h3 className="text-xl font-black text-[#0d2149] uppercase">
+                  <h3 className="text-xl font-black text-[#0d2149]">
                     Sara Strengths
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -496,7 +496,7 @@ const CoursesPage = () => {
 
                 {/* Govt Recognized Certification Section */}
                 <div className="space-y-4 pt-6">
-                  <h3 className="text-sm font-black text-[#0d2149] uppercase tracking-wide">
+                  <h3 className="text-sm font-black text-[#0d2149] tracking-wide">
                     {currentCourse.isGovt ? "Govt Recognized Certificate (AASSC)" : "Accredited Partners"}
                   </h3>
                   <CourseAccreditationLogos accreditations={currentCourse.accreditation} size="md" />
@@ -614,7 +614,7 @@ const CoursesPage = () => {
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700" />
               <div className="relative z-10 space-y-6">
-                <h3 className="text-white text-2xl font-black leading-tight uppercase">Can I suggest a course for you?</h3>
+                <h3 className="text-white text-2xl font-black leading-tight ">Can I Suggest A Course For You?</h3>
                 <p className="text-white/60 text-sm leading-relaxed">Answer a few quick questions and we'll recommend the perfect course based on your interests.</p>
                 <button
                   onClick={handleEnquire}
@@ -627,7 +627,7 @@ const CoursesPage = () => {
 
             {/* Recent Placements */}
             <div className="space-y-6">
-              <h3 className="text-xl font-black uppercase text-primary tracking-tight px-2 border-l-4 border-accent">Recent Placements</h3>
+              <h3 className="text-xl font-black  text-primary tracking-tight px-2 border-l-4 border-accent">Recent Placements</h3>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {[
                   { name: "Neha Kapoor", role: "Air India", img: "/assets/Sarah Aviation Placements/Neha Kapoor.png" },

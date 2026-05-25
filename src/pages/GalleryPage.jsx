@@ -28,7 +28,7 @@ const galleryImages = [
   { id: 23, title: "Moment of Success", url: "/assets/mediaGallery/WhatsApp Image 2026-05-02 at 3.20.04 PM.jpeg" },
   { id: 24, title: "Group Celebration", url: "/assets/mediaGallery/WhatsApp Image 2026-05-02 at 3.20.05 PM (1).jpeg" },
   { id: 25, title: "Event Highlight", url: "/assets/mediaGallery/WhatsApp Image 2026-05-02 at 3.20.05 PM.jpeg" },
-  { id: 26, title: "Training Drill", url: "/assets/mediaGallery/pic 13.jfif" }
+  //{ id: 26, title: "Training Drill", url: "/assets/mediaGallery/pic 13.jfif" }
   // { id: 27, title: "Student Drill", url: "/assets/mediaGallery/pic 14.jfif" },
   // { id: 28, title: "Practical Session", url: "/assets/mediaGallery/pic 15.jfif" },
 ];

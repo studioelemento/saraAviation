@@ -43,7 +43,7 @@ const PathwaysSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl font-black text-primary uppercase tracking-tight mb-4"
+            className="text-3xl md:text-5xl font-black text-primary  tracking-tight mb-4"
           >
             Structured Pathways <br className="hidden md:block" />
             for Every Aspirant
@@ -86,7 +86,7 @@ const PathwaysSection = () => {
 
               {/* Content */}
               <div className="p-8 flex-1 flex flex-col">
-                <h3 className="text-lg font-black uppercase text-primary mb-3 group-hover:text-accent transition-colors">
+                <h3 className="text-lg font-black  text-primary mb-3 group-hover:text-accent transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed flex-1">

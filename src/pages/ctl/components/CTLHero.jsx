@@ -41,9 +41,9 @@ const CTLHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 uppercase tracking-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6  tracking-tight"
         >
-          Integrated Pilot{" "}
+          Integrated Pilot{" "} <br />
           <span className="text-accent">Mentorship</span>{" "}
           Program
         </motion.h1>
