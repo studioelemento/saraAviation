@@ -254,7 +254,7 @@ const AASSCLogoCard = ({ size = "md" }) => {
       }`}>
       {!imgError ? (
         <img
-          src="/assets/certificatesLogo/aasscLogo.jpg"
+          src="/assets/certificatesLogo/aasscLogo.png"
           alt="AASSC Logo"
           loading="lazy"
           onError={() => setImgError(true)}
@@ -382,7 +382,7 @@ const CoursesPage = () => {
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-white text-4xl md:text-6xl font-black uppercase tracking-tight mb-6"
+              className="text-white text-4xl md:text-6xl font-black  tracking-tight mb-6"
             >
               Don't Just Dream. <span className="text-accent italic">Fly High</span>
             </motion.h1>

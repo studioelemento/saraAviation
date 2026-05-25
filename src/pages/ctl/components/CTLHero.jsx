@@ -13,10 +13,17 @@ const CTLHero = () => {
     <section className="relative pt-10 w-full min-h-screen flex flex-col items-center justify-center text-white overflow-hidden">
       {/* Background Image */}
       <img
-        src="https://i.pinimg.com/1200x/04/8f/9a/048f9afca33461c376c8d8981ffb024f.jpg"
+        src="/assets/cplImages/cplHero.png"
         alt="Pilot Background"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover"
       />
+      <div className="block md:hidden absolute inset-0 bg-[#000814]">
+        <img
+          src="/assets/cplImages/cplHeroMV.jpg"
+          alt="Pilot Background Mobile"
+          className="w-full h-full object-contain object-top"
+        />
+      </div>
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />

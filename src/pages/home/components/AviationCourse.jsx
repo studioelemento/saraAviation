@@ -26,7 +26,7 @@ export default function AviationCourses() {
 
             {location.pathname === '/about' && (
             <div className="mt-12 md:mt-16 space-y-8">
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 uppercase tracking-wider border-l-4 border-accent pl-4">
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 tracking-wider border-l-4 border-accent pl-4">
                 Why SARA Aviation?
               </h3>
  

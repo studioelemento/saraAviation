@@ -122,7 +122,7 @@ const Contact = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-white text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6"
+            className="text-white text-5xl md:text-7xl font-black tracking-tighter mb-6"
           >
             Get In <span className="text-accent italic">Touch</span>
           </motion.h1>
@@ -201,7 +201,7 @@ const Contact = () => {
               ) : (
                 <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                   <div className="mb-10">
-                    <h2 className="text-4xl font-black text-primary mb-4 uppercase tracking-tighter">Send an Inquiry</h2>
+                    <h2 className="text-4xl font-black text-primary mb-4  tracking-tighter">Send an Inquiry</h2>
                     <div className="w-20 h-1.5 bg-accent rounded-full" />
                   </div>
 
@@ -214,7 +214,7 @@ const Contact = () => {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          placeholder="RASH RAVEENDRAN"
+                          placeholder="Joen Joesph"
                           className="w-full bg-gray-50 border-0 rounded-2xl p-5 text-sm font-bold focus:ring-2 focus:ring-accent transition-all placeholder:text-gray-300"
                         />
                       </div>
@@ -225,7 +225,7 @@ const Contact = () => {
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          placeholder="cartnetecom@gmail.com"
+                          placeholder="saraaviation@gmail.com"
                           className="w-full bg-gray-50 border-0 rounded-2xl p-5 text-sm font-bold focus:ring-2 focus:ring-accent transition-all placeholder:text-gray-300"
                         />
                       </div>
@@ -238,8 +238,9 @@ const Contact = () => {
                           type="tel" 
                           required
                           value={formData.phone}
+                      
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          placeholder="+917306763990"
+                          placeholder="+919988998899"
                           className="w-full bg-gray-50 border-0 rounded-2xl p-5 text-sm font-bold focus:ring-2 focus:ring-accent transition-all placeholder:text-gray-300"
                         />
                       </div>
