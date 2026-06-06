@@ -82,7 +82,7 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: <IconFacebook />, href: 'https://www.facebook.com/share/1ADp4FEKJo/', label: 'Facebook' },
+  { icon: <IconFacebook />, href: 'https://www.facebook.com/profile.php?id=61590603324320', label: 'Facebook' },
    { icon: <IconLinkedIn />, href: 'https://www.linkedin.com/in/sara-aviation-40382840b?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
   { icon: <IconInstagram />, href: 'https://www.instagram.com/sara_aviation_/?next=%2Fsara_group_sara_tuitions%2F', label: 'Instagram' },
   { icon: <IconYoutube />, href: 'https://youtube.com/@saraaviation-2026?si=BlbFOzgEH2O9LObe', label: 'YouTube' },
