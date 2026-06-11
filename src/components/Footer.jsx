@@ -79,6 +79,7 @@ const navLinks = [
   { label: 'News & Updates', to: '/news' },
   { label: 'Careers', to: '/careers' },
   { label: 'Contact', to: '/contact' },
+   { label: 'Privacy Policy', to: '/privacy-policy' },
 ];
 
 const socialLinks = [
@@ -141,9 +142,11 @@ const Footer = () => {
       <div className="border-t border-white/10 mx-6 mb-5" />
 
       {/* Copyright */}
-      <p className="text-center text-white/40 text-xs px-4">
-        © 2026 Sara Aviation Academy. All Rights Reserved. Developed and managed by Studio Elemento.
-      </p>
+      <div className="flex flex-col md:flex-row items-center justify-center px-4 max-w-6xl mx-auto gap-4">
+        <p className="text-center md:text-left text-white/40 text-xs">
+          © 2026 Sara Aviation Academy. All Rights Reserved. Developed and managed by Studio Elemento.
+        </p>
+      </div>
     </footer>
   );
 };

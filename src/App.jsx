@@ -15,6 +15,7 @@ import GalleryPage from './pages/GalleryPage';
 import StudentHub from './pages/StudentHub';
 import CareersPage from './pages/CareersPage';
 import CTL from './pages/ctl/CTL';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -43,6 +44,7 @@ function App() {
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/placement" element={<PlacementPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
       </main>
       <Footer />
