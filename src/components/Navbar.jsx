@@ -7,13 +7,14 @@ import { cn } from '../lib/utils';
 // Links grouped by the exact 3-column layout in the reference
 const navGroups = [
   [
-     { name: 'HOME', href: '/' },
+    //  { name: 'HOME', href: '/' },
     { name: 'ABOUT SARA', href: '/about' },
+    { name: 'COURSES', href: '/courses' },
   
   ],
   [
-      { name: 'COURSES', href: '/courses' },
-    { name: 'PLACEMENT', href: '/placement' },
+      // { name: 'COURSES', href: '/courses' },
+    // { name: 'PLACEMENT', href: '/placement' },
     
   ],
   [
