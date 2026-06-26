@@ -43,7 +43,7 @@ function App() {
           <Route path="/team" element={<TeamPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/placement" element={<PlacementPage />} />
+          {/* <Route path="/placement" element={<PlacementPage />} /> */}
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
       </main>

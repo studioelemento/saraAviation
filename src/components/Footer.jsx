@@ -73,7 +73,7 @@ const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
   { label: 'Courses', to: '/courses' },
-  { label: 'Placement', to: '/placement' },
+  // { label: 'Placement', to: '/placement' },
   //{ label: 'Our Team', to: '/team' },
   { label: 'Life at Sara', to: '/gallery' },
   { label: 'News & Updates', to: '/news' },
