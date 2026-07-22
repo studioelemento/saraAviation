@@ -16,6 +16,7 @@ import StudentHub from './pages/StudentHub';
 import CareersPage from './pages/CareersPage';
 import CTL from './pages/ctl/CTL';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import Maintenance from './pages/Maintenance';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -27,6 +28,12 @@ const ScrollToTop = () => {
 };
 
 function App() {
+  const isMaintenanceMode = true; // Set this to false to disable maintenance mode
+
+  if (isMaintenanceMode) {
+    return <Maintenance />;
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <ScrollToTop />
