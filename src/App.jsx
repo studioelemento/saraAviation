@@ -28,7 +28,7 @@ const ScrollToTop = () => {
 };
 
 function App() {
-  const isMaintenanceMode = false; // Set this to false to disable maintenance mode
+  const isMaintenanceMode = true; // Set this to false to disable maintenance mode
 
   if (isMaintenanceMode) {
     return <Maintenance />;
