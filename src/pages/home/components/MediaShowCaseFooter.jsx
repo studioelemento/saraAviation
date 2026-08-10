@@ -16,7 +16,7 @@ const trainingImg = '/assets/mediaShowcase/Training.png';
 const ActivitiesImg = '/assets/mediaShowcase/activity.jpeg';
 const sportsImg = '/assets/mediaShowcase/sports.jpeg';
 
-const media = [
+const baseMedia = [
   { title: "Promo Reel", video: promoReel },
   { title: "Activities", image: ActivitiesImg },
   { title: "Training", image: trainingImg },
@@ -24,11 +24,14 @@ const media = [
   { title: "Sports", image: sportsImg },
 ];
 
+// Duplicate the items so Swiper has enough slides to show 6 at a time and loop perfectly
+const media = [...baseMedia, ...baseMedia];
+
 export function MediaShowcaseFooter() {
   const [selectedMedia, setSelectedMedia] = useState(null);
 
   return (
-    <footer className="w-full bg-black text-white py-20 overflow-hidden">
+    <section className="w-full bg-black text-white pt-20 pb-2 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Title */}
         <motion.h2
@@ -67,7 +70,7 @@ export function MediaShowcaseFooter() {
               centeredSlides: false,
             },
             1280: {
-              slidesPerView: 4.5,
+              slidesPerView: 6,
               centeredSlides: false,
             }
           }}
@@ -171,7 +174,7 @@ export function MediaShowcaseFooter() {
           </div>
         )}
       </AnimatePresence>
-    </footer>
+    </section>
   );
 }
 

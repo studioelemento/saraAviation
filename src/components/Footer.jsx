@@ -93,7 +93,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-black pt-16 pb-6">
+    <footer className="bg-black pt-8 pb-6">
       {/* Logo + Tagline */}
       <div className="flex flex-col items-center gap-3 mb-8">
         <img 
