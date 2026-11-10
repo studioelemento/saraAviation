@@ -495,12 +495,12 @@ const CoursesPage = () => {
                 </div>
 
                 {/* Govt Recognized Certification Section */}
-                <div className="space-y-4 pt-6">
+                {/* <div className="space-y-4 pt-6">
                   <h3 className="text-sm font-black text-[#0d2149] tracking-wide">
                     {currentCourse.isGovt ? "Govt Recognized Certificate (AASSC)" : "Accredited Partners"}
                   </h3>
                   <CourseAccreditationLogos accreditations={currentCourse.accreditation} size="md" />
-                </div>
+                </div> */}
 
                 {/* Action Buttons Row */}
                 <div className="pt-8 flex flex-col sm:flex-row gap-4">
