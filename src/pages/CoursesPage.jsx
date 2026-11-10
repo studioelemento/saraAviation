@@ -19,8 +19,8 @@ const coursesData = [
     duration: "12 Months, 5 days/week (Mon- Fri) 2 hours",
     eligibility: ["12th Pass or Pursuing & Graduates", "Age: 18 - 25 Years", "Skill India Certification"],
     accreditation: ["SARA"],
-    isGovt: true,
-    description: "Our flagship 1-year program is meticulously crafted to transform passionate students into elite aviation, cabin crew, and luxury hospitality professionals. Accredited by AASSC, this course guarantees hands-on experience and professional-grade grooming.",
+    // isGovt: true,
+    description: "Our flagship 1-year program is meticulously crafted to transform passionate students into elite aviation, cabin crew, and luxury hospitality professionals. this course guarantees hands-on experience and professional-grade grooming.",
     whatYouCanLearn: [
       {
         title: "1. English Enhancer",
@@ -65,9 +65,9 @@ const coursesData = [
     title: "PG Diploma Course in Aviation, Hospitality and Travel Management",
     image: coursePGDiploma,
     duration: "6 Months, 5 days/week (Mon-Fri) 2 hours",
-    eligibility: ["Graduates / Final Year Graduate", "Age: 19 - 27 Years", "Executive AASSC accreditation"],
+    eligibility: ["Graduates / Final Year Graduate", "Age: 19 - 27 Years"],
     accreditation: ["SARA"],
-    isGovt: true,
+    // isGovt: true,
     description: "An advanced, fast-track postgraduate program designed for graduates seeking leadership roles in airlines and airport management. Focuses on advanced operations, airport terminal logistics, and hospitality service standards.",
     whatYouCanLearn: [
       {
