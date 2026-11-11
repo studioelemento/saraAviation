@@ -17,7 +17,7 @@ const coursesData = [
     title: "Sara Diploma Course in Aviation, Hospitality and Travel Management",
     image: course01,
     duration: "12 Months, 5 days/week (Mon- Fri) 2 hours",
-    eligibility: ["12th Pass or Pursuing & Graduates", "Age: 18 - 25 Years", "Skill India Certification"],
+    eligibility: ["12th Pass or Pursuing & Graduates", "Age: 18 - 25 Years"],
     accreditation: ["SARA"],
     // isGovt: true,
     description: "Our flagship 1-year program is meticulously crafted to transform passionate students into elite aviation, cabin crew, and luxury hospitality professionals. this course guarantees hands-on experience and professional-grade grooming.",
