@@ -27,18 +27,17 @@ const EnrollmentModal = ({ isOpen, onClose, selectedCourse, courses }) => {
     console.log("Enrollment Form Data:", formData);
 
     try {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwGGJFr9kFVDeBH-RqXpelU25h1mvMREW4hqBdBh2JNp5w9B2vbmL1L3vICILIFBs2G/exec';
-      await fetch(SCRIPT_URL, { 
-        method: 'POST', 
-        mode: 'no-cors', 
-        body: JSON.stringify({
-          ...formData, 
-          subject: formData.course, // Map Course to Subject column
-          message: "Education: " + formData.education, // Map Education to Message column
-          source: 'Enrollment Modal'
-        }) 
-      });
-      
+      const { submitLead } = await import('../lib/submitLead');
+      await submitLead(
+        {
+          ...formData,
+          subject: formData.course,
+          message: 'Education: ' + formData.education,
+          source: 'Enrollment Modal',
+        },
+        'enrollment'
+      );
+
       setIsSubmitting(false);
       setShowSuccess(true);
       setTimeout(() => {

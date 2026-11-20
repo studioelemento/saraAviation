@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { newsArticles } from "../data/newsData";
+import { mapNewsRow } from "../lib/contentApi";
+import { usePublishedContent } from "../hooks/usePublishedContent";
 
 const placeholderImg = "https://i.pinimg.com/1200x/c8/d9/c8/c8d9c805c637845b37f69ad1291df5a2.jpg";
 
@@ -11,10 +13,11 @@ const categories = ["All", "Industry", "Academy", "Careers"];
 const NewsPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const { items: articles } = usePublishedContent('news', mapNewsRow, newsArticles);
 
   const filteredNews = activeCategory === "All" 
-    ? newsArticles 
-    : newsArticles.filter(article => article.category === activeCategory);
+    ? articles 
+    : articles.filter(article => article.category === activeCategory);
 
   return (
     <div className="bg-white min-h-screen">

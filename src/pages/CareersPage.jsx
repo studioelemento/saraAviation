@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plane, Briefcase, Users, GraduationCap, Mail, MapPin, Clock, ChevronRight } from "lucide-react";
+import { mapJobRow } from "../lib/contentApi";
+import { usePublishedContent } from "../hooks/usePublishedContent";
+import { fallbackJobOpenings } from '../data/jobsData';
 
 const benefits = [
   {
@@ -25,44 +28,6 @@ const benefits = [
   }
 ];
 
-const jobOpenings = [
-  {
-    title: "Aviation & Hospitality Faculty",
-    experience: "2–5 Years",
-    location: "Yelhanka New Town, Bangalore",
-    type: "Full-Time",
-    responsibilities: [
-      "Deliver training in aviation, cabin crew & hospitality modules",
-      "Train students in grooming, communication & customer service",
-      "Conduct practical sessions, mock interviews & assessments",
-      "Guide students for placements and career readiness"
-    ],
-    skills: [
-      "Excellent communication & presentation skills",
-      "Knowledge of aviation/hospitality industry standards",
-      "Confident, well-groomed personality",
-      "Teaching or industry experience preferred"
-    ]
-  },
-  {
-    title: "Tele-caller",
-    experience: "2–3 Years",
-    location: "Yelhanka New Town, Bangalore",
-    type: "Full-Time",
-    responsibilities: [
-      "Call & follow up on leads",
-      "Explain courses & fix appointments",
-      "Update lead details in Excel",
-      "Achieve daily/monthly targets"
-    ],
-    skills: [
-      "Strong communication & convincing skills",
-      "Target-oriented",
-      "Education sector experience preferred"
-    ]
-  }
-];
-
 const steps = [
   { id: "01", title: "Apply", desc: "Submit your updated CV and professional portfolio." },
   { id: "02", title: "Review", desc: "Our HR team evaluates your credentials and experience." },
@@ -71,6 +36,7 @@ const steps = [
 
 const CareersPage = () => {
   const [toastMessage, setToastMessage] = useState('');
+  const { items: jobOpenings } = usePublishedContent('jobs', mapJobRow, fallbackJobOpenings);
 
   const handleEmailClick = (e, emailAddress) => {
     navigator.clipboard.writeText(emailAddress)

@@ -1,109 +1,14 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { mapTeamRow } from "../lib/contentApi";
+import { usePublishedContent } from "../hooks/usePublishedContent";
 
-const placeholderImg = "https://i.pinimg.com/736x/85/8d/89/858d89f456e8e303619bbc3811f311eb.jpg";
-
-const teamMembers = [
-  {
-    id: 1,
-    name: "Capt. Rajesh Khanna",
-    role: "Managing Director",
-    experience: "25+ Years",
-    image: placeholderImg,
-    bio: "A veteran pilot with over 15,000 flying hours, leading the vision of Sara Aviation Academy."
-  },
-  {
-    id: 2,
-    name: "Sunita Deshmukh",
-    role: "Founder & Director",
-    experience: "20+ Years",
-    image: placeholderImg,
-    bio: "Instrumental in establishing international partnerships and academy growth strategies."
-  },
-  {
-    id: 3,
-    name: "Capt. Vikram Singh",
-    role: "Chief Flight Instructor",
-    experience: "18+ Years",
-    image: placeholderImg,
-    bio: "Specializes in advanced cockpit simulation and multi-engine rating training."
-  },
-  {
-    id: 4,
-    name: "Capt. Arjun Mehta",
-    role: "Senior Flight Instructor",
-    experience: "12+ Years",
-    image: placeholderImg,
-    bio: "Focuses on delivering high-precision pilot training for commercial license aspirants."
-  },
-  {
-    id: 5,
-    name: "Dr. Anita Nair",
-    role: "Chief Ground Instructor",
-    experience: "15+ Years",
-    image: placeholderImg,
-    bio: "Expert in Aviation Meteorology and Air Navigation theories."
-  },
-  {
-    id: 6,
-    name: "Priya Sharma",
-    role: "Lead Cabin Crew Trainer",
-    experience: "10+ Years",
-    image: placeholderImg,
-    bio: "Former international crew member, now shaping the next generation of hospitality stars."
-  },
-  {
-    id: 7,
-    name: "Capt. Sameer Qureshi",
-    role: "Check Pilot",
-    experience: "14+ Years",
-    image: placeholderImg,
-    bio: "Ensures the highest standards of safety and proficiency for all student pilots."
-  },
-  {
-    id: 8,
-    name: "Rohan Varma",
-    role: "Head of Operations",
-    experience: "12+ Years",
-    image: placeholderImg,
-    bio: "Oversees the day-to-day coordination between training wings and administration."
-  },
-  {
-    id: 9,
-    name: "Elena Rodriguez",
-    role: "International Relations",
-    experience: "8+ Years",
-    image: placeholderImg,
-    bio: "Managing cadet programs in USA, Spain, and Greece for our global students."
-  },
-  {
-    id: 10,
-    name: "Manoj Kumar",
-    role: "Technical Ground Instructor",
-    experience: "11+ Years",
-    image: placeholderImg,
-    bio: "Deep expertise in Aircraft General Knowledge and technical performance systems."
-  },
-  {
-    id: 11,
-    name: "Capt. Neha Gupta",
-    role: "Junior Flight Instructor",
-    experience: "6+ Years",
-    image: placeholderImg,
-    bio: "Dedicated to building strong foundational flying skills for new student pilots."
-  },
-  {
-    id: 12,
-    name: "Suresh Menon",
-    role: "Placement Head",
-    experience: "15+ Years",
-    image: placeholderImg,
-    bio: "Leading the bridge between our graduates and the world's most prestigious airlines."
-  }
-];
+import { fallbackTeamMembers } from '../data/teamData';
 
 const TeamPage = () => {
+  const { items: teamMembers } = usePublishedContent('team', mapTeamRow, fallbackTeamMembers);
+
   return (
     <div className="bg-white min-h-screen">
       {/* Header Section */}

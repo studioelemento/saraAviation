@@ -17,26 +17,53 @@ import CareersPage from './pages/CareersPage';
 import CTL from './pages/ctl/CTL';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import Maintenance from './pages/Maintenance';
+import AdminRoutes from './admin/AdminRoutes';
+import { trackPageView } from './lib/trackPageView';
+import { prefetchPublishedContent } from './hooks/usePublishedContent';
 
-// Scroll to top on route change
+// Scroll to top on route change + count public page views
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+    trackPageView(pathname);
   }, [pathname]);
   return null;
 };
 
+// Warm Supabase + cache courses/news/gallery/team/jobs in the background
+function PrefetchCms() {
+  useEffect(() => {
+    prefetchPublishedContent();
+  }, []);
+  return null;
+}
+
 function App() {
+  const location = useLocation();
   const isMaintenanceMode = false; // Set this to false to disable maintenance mode
+  const isAdminRoute = location.pathname.startsWith('/admin');
 
   if (isMaintenanceMode) {
     return <Maintenance />;
   }
 
+  // Admin uses its own layout — no public Navbar/Footer
+  if (isAdminRoute) {
+    return (
+      <>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/admin/*" element={<AdminRoutes />} />
+        </Routes>
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <ScrollToTop />
+      <PrefetchCms />
       <Navbar />
       <main>
         <Routes>

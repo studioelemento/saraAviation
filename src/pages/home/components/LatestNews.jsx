@@ -1,11 +1,13 @@
 
-
 import { Link } from 'react-router-dom';
 import { newsArticles } from '../../../data/newsData';
+import { mapNewsRow } from '../../../lib/contentApi';
+import { usePublishedContent } from '../../../hooks/usePublishedContent';
 
 export function LatestNews() {
+  const { items: articles } = usePublishedContent('news', mapNewsRow, newsArticles);
   // Show the latest 3 news items
-  const homeNews = newsArticles.slice(0, 3);
+  const homeNews = articles.slice(0, 3);
 
   return (
     <section className="w-full bg-gray-100 py-16 px-6">

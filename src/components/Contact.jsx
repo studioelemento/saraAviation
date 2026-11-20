@@ -82,12 +82,8 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwGGJFr9kFVDeBH-RqXpelU25h1mvMREW4hqBdBh2JNp5w9B2vbmL1L3vICILIFBs2G/exec';
-      await fetch(SCRIPT_URL, { 
-        method: 'POST', 
-        mode: 'no-cors', 
-        body: JSON.stringify({...formData, source: 'Contact Form'}) 
-      });
+      const { submitLead } = await import('../lib/submitLead');
+      await submitLead({ ...formData, source: 'Contact Form' }, 'contact');
 
       setShowSuccess(true);
       setFormData({ name: '', email: '', phone: '', subject: 'Admissions', message: '' });

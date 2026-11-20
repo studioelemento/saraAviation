@@ -23,12 +23,15 @@ const CareerFormSection = () => {
     setIsSubmitting(true);
 
     try {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwGGJFr9kFVDeBH-RqXpelU25h1mvMREW4hqBdBh2JNp5w9B2vbmL1L3vICILIFBs2G/exec';
-      await fetch(SCRIPT_URL, { 
-        method: 'POST', 
-        mode: 'no-cors', 
-        body: JSON.stringify({...formData, source: 'Career Inquiry Form'}) 
-      });
+      // Dual-write: Google Sheets + Supabase admin leads (see src/lib/submitLead.js)
+      const { submitLead } = await import('../../../lib/submitLead');
+      const result = await submitLead({ ...formData, source: 'Career Inquiry Form' }, 'career');
+
+      if (result.supabaseSkipped) {
+        console.warn('Career form: saved to Google Sheets only. Add Supabase keys for admin leads.');
+      } else if (!result.supabaseOk) {
+        console.warn('Career form: Google Sheets ok, but admin lead insert failed.', result.supabaseError);
+      }
 
       setShowSuccess(true);
       setFormData({
