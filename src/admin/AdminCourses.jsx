@@ -38,9 +38,14 @@ const AdminCourses = () => (
       image_url: form.image_url || null,
       duration: form.duration,
       description: form.description,
-      eligibility: form.eligibility || [],
-      accreditation: form.accreditation || [],
-      what_you_can_learn: form.what_you_can_learn || [],
+      eligibility: (form.eligibility || []).map((line) => String(line).trim()).filter(Boolean),
+      accreditation: (form.accreditation || []).map((line) => String(line).trim()).filter(Boolean),
+      what_you_can_learn: (form.what_you_can_learn || [])
+        .map((item) => ({
+          title: String(item?.title ?? '').trim(),
+          desc: String(item?.desc ?? '').trim(),
+        }))
+        .filter((item) => item.title || item.desc),
       is_govt: Boolean(form.is_govt),
       published: Boolean(form.published),
       sort_order: Number(form.sort_order) || 0,

@@ -34,8 +34,8 @@ const AdminJobs = () => (
       experience: form.experience,
       location: form.location,
       type: form.type,
-      responsibilities: form.responsibilities || [],
-      skills: form.skills || [],
+      responsibilities: (form.responsibilities || []).map((line) => String(line).trim()).filter(Boolean),
+      skills: (form.skills || []).map((line) => String(line).trim()).filter(Boolean),
       published: Boolean(form.published),
       sort_order: Number(form.sort_order) || 0,
     })}

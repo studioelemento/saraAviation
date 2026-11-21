@@ -261,41 +261,46 @@ const AdminContentManager = ({
                     <textarea
                       value={Array.isArray(form[field.key]) ? form[field.key].join('\n') : form[field.key] || ''}
                       onChange={(e) =>
-                        setField(
-                          field.key,
-                          e.target.value
-                            .split('\n')
-                            .map((line) => line.trim())
-                            .filter(Boolean)
-                        )
+                        // Keep blank lines while typing so Enter works; trim empties on Save
+                        setField(field.key, e.target.value.split('\n'))
                       }
+                      onKeyDown={(e) => e.stopPropagation()}
                       rows={field.rows || 4}
-                      placeholder="One item per line"
+                      placeholder="One item per line — press Enter for next item"
                       className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm outline-none focus:border-primary"
                     />
                   ) : field.type === 'learn' ? (
                     <textarea
                       value={
                         Array.isArray(form[field.key])
-                          ? form[field.key].map((item) => `${item.title || ''} | ${item.desc || ''}`).join('\n')
+                          ? form[field.key]
+                              .map((item) => {
+                                if (typeof item === 'string') return item;
+                                const title = item?.title || '';
+                                const desc = item?.desc || '';
+                                if (!title && !desc) return '';
+                                return desc ? `${title} | ${desc}` : title;
+                              })
+                              .join('\n')
                           : ''
                       }
                       onChange={(e) =>
+                        // Keep blank lines while typing so Enter works
                         setField(
                           field.key,
-                          e.target.value
-                            .split('\n')
-                            .map((line) => line.trim())
-                            .filter(Boolean)
-                            .map((line) => {
-                              const [titlePart, ...rest] = line.split('|');
-                              return {
-                                title: (titlePart || '').trim(),
-                                desc: rest.join('|').trim(),
-                              };
-                            })
+                          e.target.value.split('\n').map((line) => {
+                            if (!line.includes('|')) {
+                              return { title: line, desc: '' };
+                            }
+                            const [titlePart, ...rest] = line.split('|');
+                            return {
+                              title: titlePart ?? '',
+                              desc: rest.join('|'),
+                            };
+                          })
                         )
                       }
+                      onKeyDown={(e) => e.stopPropagation()}
                       rows={8}
                       placeholder={'Module title | Module description\nAnother module | Details'}
                       className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm outline-none focus:border-primary"
