@@ -1,4 +1,8 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import { listRows, mapNewsRow } from '../lib/contentApi';
+import { localNewsPublishingEnabled, mergeLocalNews } from '../lib/localNewsPublishing';
+import { newsArticles } from '../data/newsData';
+import { getPageSeo, publicPaths, siteName } from '../data/pageSeo';
 
 export const VIEW_RANGES = [
   { id: 'daily', label: 'Daily', days: 1 },
@@ -138,6 +142,53 @@ async function safeCountViews(sinceTs) {
   }
 }
 
+async function fetchRangeViews(sinceIso) {
+  const rows = [];
+  const size = 500;
+  const untilIso = new Date().toISOString();
+
+  for (let offset = 0; ; offset += size) {
+    const { data, error } = await supabase.from('page_views')
+      .select('path, created_at, visitor_id')
+      .gte('created_at', sinceIso)
+      .lte('created_at', untilIso)
+      .order('created_at', { ascending: true })
+      .order('id', { ascending: true })
+      .range(offset, offset + size - 1);
+    if (error) throw error;
+    rows.push(...data);
+    if (data.length < size) return rows;
+  }
+}
+
+async function loadPageTitles() {
+  const titles = new Map(publicPaths.map((path) => [
+    path, path === '/' ? 'Home' : getPageSeo(path).title.replace(' | ' + siteName, ''),
+  ]));
+  try {
+    const { data, error } = await listRows('news', { publishedOnly: true });
+    const local = localNewsPublishingEnabled();
+    const posts = error || (local && !data.length) ? newsArticles : data.map(mapNewsRow);
+    for (const post of local ? mergeLocalNews(posts, mapNewsRow) : posts) {
+      titles.set('/news/' + post.id, post.title);
+    }
+  } catch {
+    // Keep analytics available if the news catalog cannot be loaded.
+  }
+  return titles;
+}
+
+export function countPagePaths(rows, titles) {
+  const paths = new Map(Array.from(titles, ([path, title]) => [path, { path, title, count: 0 }]));
+  for (const row of rows) {
+    if (!row.path) continue;
+    const path = row.path.replace(/\/+$/, '') || '/';
+    const previous = paths.get(path);
+    if (previous) previous.count += 1;
+  }
+  return Array.from(paths.values()).sort((a, b) => b.count - a.count || a.path.localeCompare(b.path));
+}
+
 export async function fetchViewAnalytics(rangeId = 'weekly') {
   const emptyBuckets = buildBuckets(rangeId).map((b) => ({
     key: b.key,
@@ -162,36 +213,19 @@ export async function fetchViewAnalytics(rangeId = 'weekly') {
   const todayIso = todayStart.toISOString();
 
   try {
-    const [uniqueAllTime, uniqueToday, uniqueInRange, pageViewsAllTime, pageViewsInRange, rangeRes] =
+    const [uniqueAllTime, uniqueToday, uniqueInRange, pageViewsAllTime, pageViewsInRange, rangeRows, pageTitles] =
       await Promise.all([
         safeCountUnique(null),
         safeCountUnique(todayIso),
         safeCountUnique(sinceIso),
         safeCountViews(null),
         safeCountViews(sinceIso),
-        supabase
-          .from('page_views')
-          .select('path, created_at, visitor_id')
-          .gte('created_at', sinceIso)
-          .order('created_at', { ascending: true })
-          .limit(5000),
+        fetchRangeViews(sinceIso),
+        loadPageTitles(),
       ]);
 
-    if (rangeRes.error) throw rangeRes.error;
-
-    const rangeRows = rangeRes.data || [];
     const buckets = fillBuckets(buildBuckets(rangeId), rangeRows);
-
-    const pathCounts = {};
-    for (const row of rangeRows) {
-      const path = row.path || '/';
-      pathCounts[path] = (pathCounts[path] || 0) + 1;
-    }
-
-    const topPaths = Object.entries(pathCounts)
-      .map(([path, count]) => ({ path, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 5);
+    const topPaths = countPagePaths(rangeRows, pageTitles);
 
     return {
       uniqueAllTime,

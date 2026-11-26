@@ -30,12 +30,7 @@ create policy "Anyone can insert page views"
   to anon, authenticated
   with check (true);
 
-drop policy if exists "Anyone can read page views" on public.page_views;
-create policy "Anyone can read page views"
-  on public.page_views
-  for select
-  to anon, authenticated
-  using (true);
+-- Staff reads are configured by staff_seo.sql.
 
 -- 4) Fast count RPCs (used by admin dashboard)
 create or replace function public.count_unique_visitors(since_ts timestamptz default null)
@@ -61,5 +56,7 @@ as $$
   where (since_ts is null or created_at >= since_ts);
 $$;
 
-grant execute on function public.count_unique_visitors(timestamptz) to anon, authenticated;
-grant execute on function public.count_page_views(timestamptz) to anon, authenticated;
+revoke execute on function public.count_unique_visitors(timestamptz) from public, anon;
+grant execute on function public.count_unique_visitors(timestamptz) to authenticated;
+revoke execute on function public.count_page_views(timestamptz) from public, anon;
+grant execute on function public.count_page_views(timestamptz) to authenticated;

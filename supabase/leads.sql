@@ -28,20 +28,6 @@ create policy "Anyone can insert leads"
   on public.leads
   for insert
   to anon, authenticated
-  with check (true);
+  with check (status = 'new');
 
--- Admin reads/updates via anon key until real auth (password gate is frontend-only for now)
-drop policy if exists "Anyone can read leads" on public.leads;
-create policy "Anyone can read leads"
-  on public.leads
-  for select
-  to anon, authenticated
-  using (true);
-
-drop policy if exists "Anyone can update leads" on public.leads;
-create policy "Anyone can update leads"
-  on public.leads
-  for update
-  to anon, authenticated
-  using (true)
-  with check (true);
+-- Staff access is configured by staff_seo.sql.

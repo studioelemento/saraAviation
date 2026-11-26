@@ -22,5 +22,7 @@ as $$
   where (since_ts is null or created_at >= since_ts);
 $$;
 
-grant execute on function public.count_unique_visitors(timestamptz) to anon, authenticated;
-grant execute on function public.count_page_views(timestamptz) to anon, authenticated;
+revoke execute on function public.count_unique_visitors(timestamptz) from public, anon;
+grant execute on function public.count_unique_visitors(timestamptz) to authenticated;
+revoke execute on function public.count_page_views(timestamptz) from public, anon;
+grant execute on function public.count_page_views(timestamptz) to authenticated;

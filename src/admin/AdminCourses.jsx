@@ -1,4 +1,5 @@
 import React from 'react';
+import { normalizeLearningPoint } from '../lib/learningPoints';
 import AdminContentManager from './AdminContentManager';
 
 const emptyForm = {
@@ -28,7 +29,7 @@ const AdminCourses = () => (
       description: row.description || '',
       eligibility: Array.isArray(row.eligibility) ? row.eligibility : [],
       accreditation: Array.isArray(row.accreditation) ? row.accreditation : [],
-      what_you_can_learn: Array.isArray(row.what_you_can_learn) ? row.what_you_can_learn : [],
+      what_you_can_learn: Array.isArray(row.what_you_can_learn) ? row.what_you_can_learn.map(normalizeLearningPoint) : [],
       is_govt: Boolean(row.is_govt),
       published: row.published !== false,
       sort_order: row.sort_order ?? 0,
@@ -41,10 +42,7 @@ const AdminCourses = () => (
       eligibility: (form.eligibility || []).map((line) => String(line).trim()).filter(Boolean),
       accreditation: (form.accreditation || []).map((line) => String(line).trim()).filter(Boolean),
       what_you_can_learn: (form.what_you_can_learn || [])
-        .map((item) => ({
-          title: String(item?.title ?? '').trim(),
-          desc: String(item?.desc ?? '').trim(),
-        }))
+        .map(normalizeLearningPoint)
         .filter((item) => item.title || item.desc),
       is_govt: Boolean(form.is_govt),
       published: Boolean(form.published),
@@ -69,7 +67,6 @@ const AdminCourses = () => (
         key: 'what_you_can_learn',
         label: 'What you can learn',
         type: 'learn',
-        hint: 'One module per line: Title | Description',
       },
       { key: 'image_url', label: 'Image', type: 'image' },
       { key: 'sort_order', label: 'Sort order', type: 'number' },

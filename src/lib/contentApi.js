@@ -7,7 +7,7 @@ import { supabase, isSupabaseConfigured } from './supabase';
 
 /** Smaller payloads for public pages (faster on free-tier). */
 const PUBLIC_SELECT = {
-  news: 'id, category, title, date_label, image_url, excerpt, sort_order, created_at',
+  news: 'id, category, title, date_label, image_url, excerpt, published, sort_order, created_at',
   courses:
     'id, title, image_url, duration, eligibility, accreditation, description, what_you_can_learn, is_govt, sort_order, created_at',
   gallery: 'id, title, image_url, sort_order, created_at',

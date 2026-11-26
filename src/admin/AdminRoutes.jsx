@@ -9,6 +9,7 @@ import AdminCourses from './AdminCourses';
 import AdminGallery from './AdminGallery';
 import AdminTeam from './AdminTeam';
 import AdminJobs from './AdminJobs';
+import AdminSeo from './AdminSeo';
 
 /**
  * All /admin routes live here so App.jsx only mounts this module.
@@ -25,6 +26,7 @@ const AdminRoutes = () => {
         <Route path="gallery" element={<AdminGallery />} />
         <Route path="team" element={<AdminTeam />} />
         <Route path="jobs" element={<AdminJobs />} />
+        <Route path="seo" element={<AdminSeo />} />
       </Route>
       <Route path="*" element={<Navigate to="/admin" replace />} />
     </Routes>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { isSupabaseConfigured } from '../lib/supabase';
 import { fetchLeadStats, sourceLabel } from './leadsApi';
 import { VIEW_RANGES, fetchViewAnalytics } from './analyticsApi';
+import PageViewTable from './PageViewTable';
 import ViewsChart from './ViewsChart';
 
 const AdminDashboard = () => {
@@ -219,19 +220,7 @@ const AdminDashboard = () => {
 
         <ViewsChart buckets={views.buckets} loading={viewsLoading} />
 
-        {views.topPaths.length > 0 ? (
-          <div className="pt-2 border-t border-slate-100">
-            <h4 className="text-sm font-semibold text-slate-700 mb-3">Top pages (page views)</h4>
-            <ul className="space-y-2">
-              {views.topPaths.map((item) => (
-                <li key={item.path} className="flex items-center justify-between text-sm">
-                  <span className="font-mono text-slate-600 truncate">{item.path || '/'}</span>
-                  <span className="font-semibold text-primary">{item.count}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
+        {views.topPaths.length > 0 && <PageViewTable key={rangeId} pages={views.topPaths} />}
       </div>
 
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">

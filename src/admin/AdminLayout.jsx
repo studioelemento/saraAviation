@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet, Navigate, useNavigate } from 'react-router-dom';
-import { isAdminLoggedIn, logoutAdmin } from './adminAuth';
+import { checkStaffAccess, isLocalAdminSession, logoutAdmin } from './adminAuth';
+import { supabase } from '../lib/supabase';
 
 const navItems = [
   { to: '/admin', label: 'Dashboard', end: true, ready: true },
@@ -10,19 +11,48 @@ const navItems = [
   { to: '/admin/gallery', label: 'Gallery', ready: true },
   { to: '/admin/team', label: 'Team', ready: true },
   { to: '/admin/jobs', label: 'Jobs', ready: true },
+  { to: '/admin/seo', label: 'SEO', ready: true },
 ];
 
 const AdminLayout = () => {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  if (!isAdminLoggedIn()) {
-    return <Navigate to="/admin/login" replace />;
-  }
+  const [allowed, setAllowed] = useState(null);
+  const [signOutError, setSignOutError] = useState('');
 
-  const handleLogout = () => {
-    logoutAdmin();
-    navigate('/admin/login', { replace: true });
+  useEffect(() => {
+    let active = true;
+    let revision = 0;
+    const subscription = supabase?.auth.onAuthStateChange((event, session) => {
+      if (!isLocalAdminSession() && (event === 'SIGNED_OUT' || !session)) {
+        revision += 1;
+        setAllowed(false);
+      }
+    }).data.subscription;
+
+    const initialRevision = revision;
+    checkStaffAccess().then(
+      (result) => { if (active && revision === initialRevision) setAllowed(result); },
+      () => { if (active && revision === initialRevision) setAllowed(false); },
+    );
+
+    return () => {
+      active = false;
+      subscription?.unsubscribe();
+    };
+  }, []);
+
+  if (allowed === null) return <p className="p-8" role="status">Checking staff access...</p>;
+  if (!allowed) return <Navigate to="/admin/login" replace />;
+
+  const handleLogout = async () => {
+    try {
+      await logoutAdmin();
+      navigate('/admin/login', { replace: true });
+    } catch (error) {
+      setSignOutError(error.message);
+    }
   };
 
   return (
@@ -104,6 +134,7 @@ const AdminLayout = () => {
         </header>
 
         <main className="flex-1 p-4 md:p-6">
+          {signOutError && <p role="alert" className="mb-4 text-red-700">{signOutError}</p>}
           <Outlet />
         </main>
       </div>

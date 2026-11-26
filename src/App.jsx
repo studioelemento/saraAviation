@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import PageMetadata from './components/PageMetadata';
+import NotFoundPage from './pages/NotFoundPage';
 
 // Pages
 import Home from './pages/home/Home';
@@ -18,6 +20,7 @@ import CTL from './pages/ctl/CTL';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import Maintenance from './pages/Maintenance';
 import AdminRoutes from './admin/AdminRoutes';
+import { contentPreviewFrame } from './lib/contentPreview';
 import { trackPageView } from './lib/trackPageView';
 import { prefetchPublishedContent } from './hooks/usePublishedContent';
 
@@ -26,7 +29,7 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-    trackPageView(pathname);
+    if (!['seo-page-preview', contentPreviewFrame].includes(window.frameElement?.id)) trackPageView(pathname);
   }, [pathname]);
   return null;
 };
@@ -42,7 +45,7 @@ function PrefetchCms() {
 function App() {
   const location = useLocation();
   const isMaintenanceMode = false; // Set this to false to disable maintenance mode
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAdminRoute = /^\/admin(?:\/|$)/i.test(location.pathname);
 
   if (isMaintenanceMode) {
     return <Maintenance />;
@@ -52,6 +55,7 @@ function App() {
   if (isAdminRoute) {
     return (
       <>
+        <PageMetadata />
         <ScrollToTop />
         <Routes>
           <Route path="/admin/*" element={<AdminRoutes />} />
@@ -72,6 +76,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:articleId" element={<NewsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/student-hub" element={<StudentHub />} />
           <Route path="/team" element={<TeamPage />} />
@@ -79,6 +84,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/placement" element={<PlacementPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

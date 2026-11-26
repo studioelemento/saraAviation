@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { newsArticles } from "../data/newsData";
@@ -12,8 +13,27 @@ const categories = ["All", "Industry", "Academy", "Careers"];
 
 const NewsPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedArticle, setSelectedArticle] = useState(null);
-  const { items: articles } = usePublishedContent('news', mapNewsRow, newsArticles);
+  const { articleId } = useParams();
+  const { items: articles, loading, fromCms } = usePublishedContent('news', mapNewsRow, newsArticles);
+
+  if (articleId) {
+    const article = articles.find((item) => String(item.id) === articleId);
+    return (
+      <article className="mx-auto max-w-4xl px-5 pb-20 pt-32">
+        <Link to="/news" className="text-sm font-semibold text-primary underline">Back to news</Link>
+        {article ? (
+          <>
+            {article.image && <img src={article.image} alt={article.title} className="mt-5 w-full rounded-2xl object-cover sm:max-h-96" />}
+            <p className="mt-6 text-sm font-medium text-slate-600">{article.category} {article.date && ' / ' + article.date}</p>
+            <h1 className="mt-2 text-3xl font-bold text-primary sm:text-4xl">{article.title}</h1>
+            <p className="mt-5 whitespace-pre-wrap text-slate-700">{article.excerpt}</p>
+          </>
+        ) : (
+          <p className="mt-5" role="status">{loading || !fromCms ? 'News post unavailable or still loading.' : 'This news post is unavailable.'}</p>
+        )}
+      </article>
+    );
+  }
 
   const filteredNews = activeCategory === "All" 
     ? articles 
@@ -103,8 +123,8 @@ const NewsPage = () => {
                     {item.excerpt}
                   </p>
                   <div className="mt-auto">
-                    <button 
-                      onClick={() => setSelectedArticle(item)}
+                    <Link
+                      to={'/news/' + encodeURIComponent(item.id)}
                       className="text-primary font-bold text-sm inline-flex items-center gap-2 group/btn hover:text-accent transition-colors"
                     >
                       Read Story
@@ -114,7 +134,7 @@ const NewsPage = () => {
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -123,80 +143,6 @@ const NewsPage = () => {
         </motion.div>
       </section>
 
-      {/* Modal Section */}
-      <AnimatePresence>
-        {selectedArticle && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedArticle(null)}
-              className="absolute inset-0 bg-primary/60 backdrop-blur-sm" 
-            />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative bg-white w-full max-w-2xl max-h-[80vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col"
-            >
-              <button 
-                onClick={() => setSelectedArticle(null)}
-                className="absolute top-4 right-4 z-10 bg-white/80 backdrop-blur shadow-md p-2 rounded-full hover:bg-gray-100 transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              <div className="overflow-y-auto">
-                <img 
-                  src={selectedArticle.image} 
-                  alt={selectedArticle.title} 
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-8 sm:p-10">
-                  <span className="bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">
-                    {selectedArticle.category}
-                  </span>
-                  <p className="text-gray-400 text-xs font-medium mb-2 tracking-wide">
-                    {selectedArticle.date}
-                  </p>
-                  <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6 leading-tight">
-                    {selectedArticle.title}
-                  </h2>
-                  <div className="text-gray-600 leading-relaxed space-y-4">
-                    <p>{selectedArticle.excerpt}</p>
-                    <p>
-                      More details and the full story will be available soon. Sara Aviation Academy is committed to keeping you updated with the latest in aviation.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* Newsletter / CTA Section */}
-      {/* <section className="py-24 bg-gray-50 text-center px-6">
-        <div className="max-w-2xl mx-auto space-y-6">
-          <h2 className="text-3xl font-bold text-primary">Get the Latest Updates</h2>
-          <p className="text-gray-600">
-            Subscribe to our newsletter to receive the latest aviation industry news and Sara Aviation Academy announcements.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Your email address"
-              className="flex-1 px-6 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
-            />
-            <button className="bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-primary/90 transition shadow-lg">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 };

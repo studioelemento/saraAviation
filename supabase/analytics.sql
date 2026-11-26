@@ -19,9 +19,4 @@ create policy "Anyone can insert page views"
   to anon, authenticated
   with check (true);
 
-drop policy if exists "Anyone can read page views" on public.page_views;
-create policy "Anyone can read page views"
-  on public.page_views
-  for select
-  to anon, authenticated
-  using (true);
+-- Staff reads are configured by staff_seo.sql.

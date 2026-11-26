@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Star, ArrowLeft, ArrowUpRight } from 'lucide-react';
 import EnrollmentModal from '../components/EnrollmentModal';
 import { mapCourseRow } from '../lib/contentApi';
+import { normalizeLearningPoint } from '../lib/learningPoints';
 import { usePublishedContent } from '../hooks/usePublishedContent';
 
 import { coursesData } from '../data/coursesData';
@@ -217,12 +218,12 @@ const CoursesPage = () => {
 
                   <div className="space-y-6 divide-y divide-gray-100">
                     {currentCourse.whatYouCanLearn ? (
-                      currentCourse.whatYouCanLearn.map((item, idx) => (
+                      currentCourse.whatYouCanLearn.map(normalizeLearningPoint).map((item, idx) => (
                         <div key={idx} className={`${idx > 0 ? 'pt-6' : ''} space-y-2`}>
                           <h4 className="text-[16px] font-black text-[#0d2149]">
-                            {item.title}
+                            {idx + 1}. {item.title}
                           </h4>
-                          <p className="text-[15px] font-semibold text-gray-500 leading-relaxed">
+                          <p className="text-[15px] font-semibold text-gray-500 leading-relaxed whitespace-pre-line">
                             {item.desc}
                           </p>
                         </div>

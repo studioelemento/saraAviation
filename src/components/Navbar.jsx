@@ -9,6 +9,7 @@ const navGroups = [
   [
     //  { name: 'HOME', href: '/' },
     { name: 'ABOUT SARA', href: '/about' },
+    { name: 'OUR TEAM', href: '/team' },
     { name: 'COURSES', href: '/courses' },
   
   ],
@@ -20,7 +21,6 @@ const navGroups = [
   [
      { name: 'NEWS & UPDATES', href: '/news' },
     { name: 'Life at Sara', href: '/gallery' }
-    // { name: 'OUR TEAM', href: '/team' },
   ],
   [
     { name: 'CAREERS', href: '/careers' },

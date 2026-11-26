@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { isAdminLoggedIn, loginAdmin } from './adminAuth';
+import { useNavigate } from 'react-router-dom';
+import { loginAdmin } from './adminAuth';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -8,24 +8,19 @@ const AdminLogin = () => {
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  if (isAdminLoggedIn()) {
-    return <Navigate to="/admin" replace />;
-  }
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
     setIsSubmitting(true);
 
-    const ok = loginAdmin(password.trim());
-
-    if (!ok) {
-      setError('Incorrect password. Try again.');
+    try {
+      await loginAdmin(password);
+      navigate('/admin', { replace: true });
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setIsSubmitting(false);
-      return;
     }
-
-    navigate('/admin', { replace: true });
   };
 
   return (

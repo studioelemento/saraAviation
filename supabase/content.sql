@@ -81,26 +81,7 @@ alter table public.gallery enable row level security;
 alter table public.team enable row level security;
 alter table public.jobs enable row level security;
 
--- Public can read published rows; anon can manage until real auth (password gate is frontend)
-do $$
-declare
-  t text;
-begin
-  foreach t in array array['news','courses','gallery','team','jobs']
-  loop
-    execute format('drop policy if exists "Public read %1$s" on public.%1$s', t);
-    execute format(
-      'create policy "Public read %1$s" on public.%1$s for select to anon, authenticated using (published = true or true)',
-      t
-    );
-    -- allow select all for admin list (includes drafts) — tighten later with auth
-    execute format('drop policy if exists "Anon manage %1$s" on public.%1$s', t);
-    execute format(
-      'create policy "Anon manage %1$s" on public.%1$s for all to anon, authenticated using (true) with check (true)',
-      t
-    );
-  end loop;
-end $$;
+-- Public and staff content policies are configured by staff_seo.sql.
 
 -- Storage bucket for images
 insert into storage.buckets (id, name, public)
@@ -113,21 +94,4 @@ create policy "Public read media"
   to anon, authenticated
   using (bucket_id = 'media');
 
-drop policy if exists "Anon upload media" on storage.objects;
-create policy "Anon upload media"
-  on storage.objects for insert
-  to anon, authenticated
-  with check (bucket_id = 'media');
-
-drop policy if exists "Anon update media" on storage.objects;
-create policy "Anon update media"
-  on storage.objects for update
-  to anon, authenticated
-  using (bucket_id = 'media')
-  with check (bucket_id = 'media');
-
-drop policy if exists "Anon delete media" on storage.objects;
-create policy "Anon delete media"
-  on storage.objects for delete
-  to anon, authenticated
-  using (bucket_id = 'media');
+-- Media write permissions are configured by staff_seo.sql.

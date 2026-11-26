@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { localNewsPublishingEnabled, mergeLocalNews } from '../lib/localNewsPublishing';
+import { useContentPreview } from '../lib/contentPreview';
 import { listRows, mapCourseRow, mapGalleryRow, mapJobRow, mapNewsRow, mapTeamRow } from '../lib/contentApi';
 
 const memoryCache = new Map();
@@ -25,8 +27,8 @@ function readMemory(table) {
   return hit.items;
 }
 
-function writeMemory(table, items) {
-  memoryCache.set(cacheKey(table), { at: Date.now(), items });
+function writeMemory(table, items, at = Date.now()) {
+  memoryCache.set(cacheKey(table), { at, items });
 }
 
 function readLocal(table) {
@@ -54,10 +56,10 @@ function writeLocal(table, items) {
 
 function getInstantItems(table, fallback) {
   const mem = readMemory(table);
-  if (mem?.length) return mem;
+  if (mem) return mem;
   const local = readLocal(table);
-  if (local?.items?.length) {
-    writeMemory(table, local.items);
+  if (local) {
+    writeMemory(table, local.items, local.at);
     return local.items;
   }
   return fallback;
@@ -73,7 +75,7 @@ function isFresh(table) {
 
 async function fetchAndCache(table, mapRow) {
   const { data, error } = await listRows(table, { publishedOnly: true });
-  if (error || !data?.length) return { items: null, error };
+  if (error) return { items: null, error };
   const mapped = data.map(mapRow);
   writeMemory(table, mapped);
   writeLocal(table, mapped);
@@ -125,7 +127,7 @@ export function usePublishedContent(table, mapRow, fallback = []) {
     const instant = getInstantItems(table, fallback);
     return !(instant && instant.length);
   });
-  const [fromCms, setFromCms] = useState(() => Boolean(readMemory(table)?.length || readLocal(table)?.items?.length));
+  const [fromCms, setFromCms] = useState(() => Boolean(readMemory(table) || readLocal(table)));
 
   useEffect(() => {
     let cancelled = false;
@@ -139,7 +141,7 @@ export function usePublishedContent(table, mapRow, fallback = []) {
       else setLoading(false);
 
       // Skip network if memory/local cache is still fresh
-      if (isFresh(table) && instant?.length) {
+      if (isFresh(table)) {
         setItems(instant);
         setFromCms(true);
         setLoading(false);
@@ -149,7 +151,7 @@ export function usePublishedContent(table, mapRow, fallback = []) {
       const { items: mapped, error } = await fetchAndCache(table, mapRow);
       if (cancelled) return;
 
-      if (!error && mapped?.length) {
+      if (!error && mapped) {
         setItems(mapped);
         setFromCms(true);
       } else if (!instant?.length) {
@@ -166,5 +168,12 @@ export function usePublishedContent(table, mapRow, fallback = []) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [table]);
 
-  return { items, loading, fromCms };
+  const preview = useContentPreview(table);
+  const publishedItems = table === 'news' && localNewsPublishingEnabled()
+    ? mergeLocalNews(items.length ? items : fallback, mapRow)
+    : items;
+  const visibleItems = preview
+    ? [mapRow(preview), ...publishedItems.filter((item) => item.id !== preview.id)]
+    : publishedItems;
+  return { items: visibleItems, loading, fromCms };
 }

@@ -1,8 +1,10 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(about|careers|contact|courses|ctl|gallery|news|placement|privacy-policy|student-hub|team)/?", "dest": "/$1/index.html" },
+    { "src": "/news/([a-zA-Z0-9-]+)/?", "dest": "/news/$1/index.html", "check": true },
+    { "src": "/news/[a-zA-Z0-9-]+/?", "dest": "/news-fallback.html" },
+    { "src": "/admin(?:/.*)?", "dest": "/admin.html" },
+    { "src": "/.*", "status": 404, "dest": "/404.html" }
   ]
 }
