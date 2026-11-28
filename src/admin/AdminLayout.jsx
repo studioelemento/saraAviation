@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Outlet, Navigate, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, Navigate, useNavigate, Link } from 'react-router-dom';
+import { 
+  LayoutDashboard, 
+  Users, 
+  Newspaper, 
+  GraduationCap, 
+  Image as ImageIcon, 
+  UserCheck, 
+  Briefcase, 
+  Search, 
+  LogOut, 
+  Menu, 
+  X,
+  ExternalLink,
+  ChevronRight
+} from 'lucide-react';
 import { checkStaffAccess, isLocalAdminSession, logoutAdmin } from './adminAuth';
 import { supabase } from '../lib/supabase';
 
 const navItems = [
-  { to: '/admin', label: 'Dashboard', end: true, ready: true },
-  { to: '/admin/leads', label: 'Leads', ready: true },
-  { to: '/admin/news', label: 'News', ready: true },
-  { to: '/admin/courses', label: 'Courses', ready: true },
-  { to: '/admin/gallery', label: 'Gallery', ready: true },
-  { to: '/admin/team', label: 'Team', ready: true },
-  { to: '/admin/jobs', label: 'Jobs', ready: true },
-  { to: '/admin/seo', label: 'SEO', ready: true },
+  { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, end: true, ready: true },
+  { to: '/admin/leads', label: 'Leads', icon: Users, ready: true },
+  { to: '/admin/news', label: 'News', icon: Newspaper, ready: true },
+  { to: '/admin/courses', label: 'Courses', icon: GraduationCap, ready: true },
+  { to: '/admin/gallery', label: 'Gallery', icon: ImageIcon, ready: true },
+  { to: '/admin/team', label: 'Team', icon: UserCheck, ready: true },
+  { to: '/admin/jobs', label: 'Jobs', icon: Briefcase, ready: true },
+  { to: '/admin/seo', label: 'SEO', icon: Search, ready: true },
 ];
 
 const AdminLayout = () => {
@@ -43,7 +58,14 @@ const AdminLayout = () => {
     };
   }, []);
 
-  if (allowed === null) return <p className="p-8" role="status">Checking staff access...</p>;
+  if (allowed === null) return (
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="flex items-center gap-3 text-slate-500 font-medium text-sm">
+        <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+        Checking staff access...
+      </div>
+    </div>
+  );
   if (!allowed) return <Navigate to="/admin/login" replace />;
 
   const handleLogout = async () => {
@@ -56,85 +78,148 @@ const AdminLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 flex">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex">
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 w-64 bg-primary text-white flex flex-col transition-transform lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 w-64 bg-[#0a192f] text-white flex flex-col shadow-2xl transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="px-6 py-6 border-b border-white/10">
-          <p className="text-xs tracking-[0.2em] uppercase text-accent font-semibold">Sara Aviation</p>
-          <h1 className="mt-1 text-lg font-heading font-bold">Admin Panel</h1>
+        {/* Brand Header */}
+        <div className="h-20 px-6 border-b border-white/10 flex items-center justify-between shrink-0 bg-[#081426]">
+          <Link to="/" target="_blank" rel="noreferrer" className="flex items-center gap-3 group">
+            <img 
+              src="/assets/logo/SaraAviationLogoWhiteOrangeAvif.avif" 
+              alt="Sara Aviation Logo" 
+              className="h-9 w-auto object-contain"
+            />
+            <div className="leading-none">
+              <span className="block text-[10px] tracking-[0.2em] uppercase font-bold text-accent">Sara Aviation</span>
+              <span className="block text-sm font-black text-white tracking-wide mt-0.5">Admin Portal</span>
+            </div>
+          </Link>
+          <button 
+            type="button" 
+            onClick={() => setMobileOpen(false)}
+            className="lg:hidden text-white/60 hover:text-white p-1 rounded-lg"
+          >
+            <X size={20} />
+          </button>
         </div>
 
-        <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-          {navItems.map((item) =>
-            item.ready ? (
+        {/* Navigation Links (Scrollable area) */}
+        <div className="flex-1 overflow-y-auto px-4 py-5 space-y-1.5 custom-scrollbar">
+          <div className="px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-white/40">
+            Navigation
+          </div>
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return item.ready ? (
               <NavLink
                 key={item.label}
                 to={item.to}
                 end={item.end}
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
-                  `block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${
-                    isActive ? 'bg-white text-primary' : 'text-white/80 hover:bg-white/10 hover:text-white'
+                  `flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 group relative ${
+                    isActive
+                      ? 'bg-gradient-to-r from-accent to-[#e59217] text-white shadow-lg shadow-accent/25'
+                      : 'text-white/70 hover:text-white hover:bg-white/5'
                   }`
                 }
               >
-                {item.label}
+                {({ isActive }) => (
+                  <>
+                    <Icon size={18} className={`shrink-0 transition-transform duration-200 ${isActive ? 'scale-110' : 'group-hover:scale-110 text-white/50 group-hover:text-white'}`} />
+                    <span className="flex-1">{item.label}</span>
+                    {isActive && <ChevronRight size={14} className="shrink-0 text-white/80" />}
+                  </>
+                )}
               </NavLink>
             ) : (
               <div
                 key={item.label}
-                className="flex items-center justify-between rounded-xl px-4 py-2.5 text-sm text-white/40 cursor-not-allowed"
-                title="Coming in a later step"
+                className="flex items-center justify-between rounded-xl px-4 py-3 text-sm text-white/30 cursor-not-allowed"
+                title="Coming soon"
               >
-                <span>{item.label}</span>
-                <span className="text-[10px] uppercase tracking-wide">Soon</span>
+                <div className="flex items-center gap-3.5">
+                  <Icon size={18} className="shrink-0 text-white/20" />
+                  <span>{item.label}</span>
+                </div>
+                <span className="text-[10px] uppercase tracking-wide bg-white/5 px-2 py-0.5 rounded text-white/40">Soon</span>
               </div>
-            )
-          )}
-        </nav>
+            );
+          })}
+        </div>
 
-        <div className="p-4 border-t border-white/10">
+        {/* Bottom User & Sign Out Section (Sticky to bottom of sidebar) */}
+        <div className="p-4 border-t border-white/10 bg-[#081426] shrink-0 space-y-2">
+          <Link
+            to="/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+          >
+            <span className="flex items-center gap-2">
+              <ExternalLink size={14} />
+              Visit Public Website
+            </span>
+          </Link>
           <button
             type="button"
             onClick={handleLogout}
-            className="w-full rounded-xl border border-white/20 px-4 py-2.5 text-sm font-medium hover:bg-white/10 transition-colors"
+            className="w-full flex items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-bold text-red-300 hover:text-red-200 hover:bg-red-500/10 hover:border-red-500/20 transition-all duration-200 cursor-pointer shadow-sm"
           >
-            Sign out
+            <LogOut size={15} />
+            <span>Sign out</span>
           </button>
         </div>
       </aside>
 
-      {mobileOpen ? (
+      {/* Mobile backdrop */}
+      {mobileOpen && (
         <button
           type="button"
           aria-label="Close menu"
-          className="fixed inset-0 z-30 bg-black/40 lg:hidden"
+          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden transition-opacity"
           onClick={() => setMobileOpen(false)}
         />
-      ) : null}
+      )}
 
-      {/* Main */}
-      <div className="flex-1 min-w-0 flex flex-col">
-        <header className="sticky top-0 z-20 bg-white border-b border-slate-200 px-4 py-3 flex items-center gap-3">
-          <button
-            type="button"
-            className="lg:hidden rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium"
-            onClick={() => setMobileOpen(true)}
-          >
-            Menu
-          </button>
-          <div className="min-w-0">
-            <p className="text-sm font-semibold text-primary truncate">Sara Aviation Admin</p>
-            <p className="text-xs text-slate-500">Full content admin</p>
+      {/* Main Content Area */}
+      <div className="flex-1 min-w-0 flex flex-col lg:pl-64">
+        {/* Top Header */}
+        <header className="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 flex items-center justify-between shadow-xs">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              className="lg:hidden p-2 -ml-2 rounded-xl text-slate-600 hover:text-primary hover:bg-slate-100 transition-colors"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open sidebar"
+            >
+              <Menu size={22} />
+            </button>
+            <div>
+              <p className="text-base font-bold text-primary font-heading leading-tight">Sara Aviation Admin</p>
+              <p className="text-xs text-slate-500 font-medium">Content Management & Analytics System</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Live Connected
+            </span>
           </div>
         </header>
 
-        <main className="flex-1 p-4 md:p-6">
-          {signOutError && <p role="alert" className="mb-4 text-red-700">{signOutError}</p>}
+        {/* Page Content */}
+        <main className="flex-1 p-4 md:p-8">
+          {signOutError && (
+            <div role="alert" className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+              {signOutError}
+            </div>
+          )}
           <Outlet />
         </main>
       </div>
